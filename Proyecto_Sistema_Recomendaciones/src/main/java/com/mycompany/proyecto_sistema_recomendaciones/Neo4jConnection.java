@@ -11,6 +11,10 @@ import org.neo4j.driver.GraphDatabase;
 import org.neo4j.driver.Result;
 import org.neo4j.driver.Session;
 import org.neo4j.driver.types.Node;
+import org.neo4j.driver.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Neo4jConnection {
@@ -44,6 +48,43 @@ public class Neo4jConnection {
         e.printStackTrace();
     }
 }
+     // Método para obtener perros recomendados según las preferencias del usuario
+    public List<Perro> obtenerPerrosRecomendados(String color, String tamaño, String pelo, String personalidad, String tamañoEspacio, int edad, String viveSolo, String alergia) {
+        List<Perro> perrosRecomendados = new ArrayList<>();
+
+        String uri = "neo4j+s://0503f9ee.databases.neo4j.io";
+        String user = "neo4j";
+        String password = "EPzLf4ZMyFJYAB-dr4bDr1rQ6B1M3aSpnpB6d9qHTPA";
+
+        try (Driver driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
+             Session session = driver.session()) {
+
+            // Construir la consulta Cypher
+            String query = "MATCH (p:Perro) " +
+                           "WHERE p.color = $color " +
+                           "AND p.tamaño = $tamaño " +
+                           "AND p.tipoPelo = $pelo " +
+                           "AND p.personalidad = $personalidad " +
+                           "RETURN p";
+
+            // Parámetros de la consulta
+            Value parameters = Values.parameters(
+                "color", color,
+                "tamaño", tamaño,
+                "pelo", pelo,
+                "personalidad", personalidad
+            );
+
+            // Ejecutar la consulta y procesar los resultados
+            
+
+        } catch (Exception e) {
+            // Manejar la excepción
+            e.printStackTrace();
+        }
+
+        return perrosRecomendados;
+    }
 
 }
     
