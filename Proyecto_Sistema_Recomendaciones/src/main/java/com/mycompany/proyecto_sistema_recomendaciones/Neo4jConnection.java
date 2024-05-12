@@ -49,7 +49,7 @@ public class Neo4jConnection {
     }
 }
      // Método para obtener perros recomendados según las preferencias del usuario
-    public List<Perro> obtenerPerrosRecomendados(String color, String tamaño, String pelo, String personalidad, String tamañoEspacio, int edad, String viveSolo, String alergia) {
+    public List<Perro> obtenerPerrosRecomendados(String color, String tamaño, String pelo, String personalidad) {
         List<Perro> perrosRecomendados = new ArrayList<>();
 
         String uri = "neo4j+s://0503f9ee.databases.neo4j.io";
@@ -65,6 +65,7 @@ public class Neo4jConnection {
                            "AND p.tamaño = $tamaño " +
                            "AND p.tipoPelo = $pelo " +
                            "AND p.personalidad = $personalidad " +
+                           //Falta aqui tolerancia al clima
                            "RETURN p";
 
             // Parámetros de la consulta
@@ -73,6 +74,7 @@ public class Neo4jConnection {
                 "tamaño", tamaño,
                 "pelo", pelo,
                 "personalidad", personalidad
+                //Falta aqui tolerancia al clima
             );
 
             // Ejecutar la consulta y procesar los resultados
@@ -85,6 +87,8 @@ public class Neo4jConnection {
 
         return perrosRecomendados;
     }
+    
+    
 
 }
     
