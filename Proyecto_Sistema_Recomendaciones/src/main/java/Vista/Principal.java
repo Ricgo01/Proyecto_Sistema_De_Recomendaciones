@@ -251,7 +251,7 @@ public class Principal extends javax.swing.JFrame {
         );
         
         // Hacer algo con el objeto Perro creado, como imprimirlo o guardarlo
-        System.out.println("Se ha creado un nuevo perro con las siguientes características:");
+        System.out.println("Se ha creado un nuevo perro con las siguientes características :D:");
         System.out.println(perro);
     }
     }//GEN-LAST:event_BbuscarActionPerformed
