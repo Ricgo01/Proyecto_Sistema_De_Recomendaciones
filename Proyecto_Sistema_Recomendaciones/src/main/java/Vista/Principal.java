@@ -4,6 +4,9 @@
  */
 package Vista;
 
+import com.mycompany.proyecto_sistema_recomendaciones.Perro;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author viankacastro
@@ -37,7 +40,7 @@ public class Principal extends javax.swing.JFrame {
         grandeCB = new javax.swing.JCheckBox();
         blancoCB = new javax.swing.JCheckBox();
         grisCB = new javax.swing.JCheckBox();
-        muticolorCB = new javax.swing.JCheckBox();
+        multicolorCB = new javax.swing.JCheckBox();
         marronCB = new javax.swing.JCheckBox();
         cortoCB = new javax.swing.JCheckBox();
         largoCB = new javax.swing.JCheckBox();
@@ -96,8 +99,8 @@ public class Principal extends javax.swing.JFrame {
         BGcolor.add(grisCB);
         getContentPane().add(grisCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 540, -1, -1));
 
-        BGcolor.add(muticolorCB);
-        getContentPane().add(muticolorCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 640, -1, -1));
+        BGcolor.add(multicolorCB);
+        getContentPane().add(multicolorCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 640, -1, -1));
 
         BGcolor.add(marronCB);
         getContentPane().add(marronCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, -1, -1));
@@ -140,6 +143,11 @@ public class Principal extends javax.swing.JFrame {
         Bbuscar.setFont(new java.awt.Font("Futura", 1, 18)); // NOI18N
         Bbuscar.setForeground(new java.awt.Color(88, 45, 35));
         Bbuscar.setLabel("BUSCAR");
+        Bbuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BbuscarActionPerformed(evt);
+            }
+        });
         getContentPane().add(Bbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 720, 160, 50));
 
         fondoJL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/GRAFICA1.png")
@@ -164,6 +172,89 @@ public class Principal extends javax.swing.JFrame {
     private void blancoCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blancoCBActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_blancoCBActionPerformed
+
+    private void BbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarActionPerformed
+     String colorSeleccionado = "";
+    String tamañoSeleccionado = "";
+    String tipoPeloSeleccionado = "";
+    String personalidadSeleccionada = "";
+    String toleranciaClimaSeleccionada = "";
+    
+    // Obtener el color seleccionado
+    if (negroCB.isSelected()) {
+        colorSeleccionado = "Negro";
+    } else if (blancoCB.isSelected()) {
+        colorSeleccionado = "Blanco";
+    } else if (grisCB.isSelected()) {
+        colorSeleccionado = "Gris";
+    } else if (multicolorCB.isSelected()) {
+        colorSeleccionado = "Multicolor"; 
+    } else if (marronCB.isSelected()) {
+        colorSeleccionado = "Marron";
+    }
+    
+    // Obtener el tamaño seleccionado
+    if (pequenoCB.isSelected()) {
+        tamañoSeleccionado = "Pequeño";
+    } else if (medianoCB.isSelected()) {
+        tamañoSeleccionado = "Mediano";
+    } else if (grandeCB.isSelected()) {
+        tamañoSeleccionado = "Grande";
+    }
+    
+    if (cortoCB.isSelected()) {
+        tipoPeloSeleccionado = "Corto";
+    } else if (largoCB.isSelected()) {
+        tipoPeloSeleccionado = "Largo";
+    } else if (rizadoCB.isSelected()) {
+        tipoPeloSeleccionado = "Rizado";
+    }else if (sinPeloCB.isSelected()) {
+        tipoPeloSeleccionado = "Sin Pelo ";
+    }
+
+    // Obtener la personalidad seleccionada
+    if (activoEnergeticoCB.isSelected()) {
+        personalidadSeleccionada = "Activo/Energetico";
+    } else if (sociableAmigableCB.isSelected()) {
+        personalidadSeleccionada = "Sociable/Amigable";
+    } else if (tranquiloRelajadoCB.isSelected()) {
+        personalidadSeleccionada = "Tranquilo/Relajado";
+    }
+      else if (indReservadoCB.isSelected()) {
+        personalidadSeleccionada = "Independiente/Reservado";
+    }
+
+    // Obtener la tolerancia al clima seleccionada
+    if (calidosCB.isSelected()) {
+        toleranciaClimaSeleccionada = "Calidos";
+    } else if (friosCB.isSelected()) {
+        toleranciaClimaSeleccionada = "Frios";
+    } else if (adaptableCB.isSelected()) {
+        toleranciaClimaSeleccionada = "Baja";
+    }
+
+    
+    // Continuar con la obtención de las otras características del perro de manera similar
+    
+    // Verificar si todas las características del perro fueron seleccionadas
+    if (colorSeleccionado.isEmpty() || tamañoSeleccionado.isEmpty() || tipoPeloSeleccionado.isEmpty() || personalidadSeleccionada.isEmpty() || toleranciaClimaSeleccionada.isEmpty()) {
+        // Mostrar un mensaje de error si alguna característica no fue seleccionada
+        JOptionPane.showMessageDialog(this, "Debe seleccionar al menos una opción en cada grupo.", "Error", JOptionPane.ERROR_MESSAGE);
+    } else {
+        // Crear una instancia de la clase Perro utilizando los valores seleccionados
+        Perro perro = new Perro(
+            colorSeleccionado,
+            tamañoSeleccionado,
+            tipoPeloSeleccionado,
+            personalidadSeleccionada,
+            toleranciaClimaSeleccionada
+        );
+        
+        // Hacer algo con el objeto Perro creado, como imprimirlo o guardarlo
+        System.out.println("Se ha creado un nuevo perro con las siguientes características:");
+        System.out.println(perro);
+    }
+    }//GEN-LAST:event_BbuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -220,7 +311,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JCheckBox largoCB;
     private javax.swing.JCheckBox marronCB;
     private javax.swing.JCheckBox medianoCB;
-    private javax.swing.JCheckBox muticolorCB;
+    private javax.swing.JCheckBox multicolorCB;
     private javax.swing.JCheckBox negroCB;
     private javax.swing.JCheckBox pequenoCB;
     private javax.swing.JCheckBox rizadoCB;
