@@ -13,6 +13,9 @@ public class Controlador {
     //Este metodo es el que gracias a Cypher se recorrera un hash map con las caracteristicas que el usuario desea del perro y se pondra un puntaje de acuerdo al nivel de coincidencia, esto para retornar a los perros recomendados
     public List<String> PerrosRecomendados(){
         return null;
+        
+        
+        
     }
     
 }
