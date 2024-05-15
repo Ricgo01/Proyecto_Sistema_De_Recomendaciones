@@ -41,7 +41,7 @@ public class Controlador {
             session.close();
         }
     }
-
+//Cierra esto
     public void close() {
         dbConnection.close();
     }
