@@ -11,14 +11,79 @@ import org.neo4j.driver.GraphDatabase;
 import org.neo4j.driver.Session;
 import org.neo4j.driver.Result;
 import org.neo4j.driver.Record;
+import org.neo4j.driver.Transaction;
 
 public class Controlador {
     private Neo4jConnection dbConnection;
 
     public Controlador() {
         this.dbConnection = new Neo4jConnection("neo4j+s://0503f9ee.databases.neo4j.io", "neo4j", "EPzLf4ZMyFJYAB-dr4bDr1rQ6B1M3aSpnpB6d9qHTPA");
+        initializeDatabase();
     }
-
+    
+    private void initializeDatabase() {
+        try (Session session = dbConnection.createSession()) {
+            try (Transaction tx = session.beginTransaction()) {
+                tx.run("CREATE (p:Perro {nombre: 'Chihuahua'}) " +
+                       "MERGE (t:Tamano {name: 'Pequeño'}) " +
+                       "MERGE (pel:Pelo {name: 'Liso'}) " +
+                       "MERGE (tp:TamañoPelo {name: 'Corto'}) " +
+                       "MERGE (c:Color {name: 'Café'}) " +
+                       "MERGE (pers:Personalidad {name: 'Juguetón'}) " +
+                       "MERGE (p)-[:TIENE_TAMANO]->(t) " +
+                       "MERGE (p)-[:TIENE_PELO]->(pel) " +
+                       "MERGE (p)-[:TIENE_TAMAÑO_PELO]->(tp) " +
+                       "MERGE (p)-[:TIENE_COLOR]->(c) " +
+                       "MERGE (p)-[:TIENE_PERSONALIDAD]->(pers)");
+                tx.run("CREATE (p:Perro {nombre: 'Schnauzer'}) " +
+                       "MERGE (t:Tamano {name: 'Mediano'}) " +
+                       "MERGE (pel:Pelo {name: 'Ondulado'}) " +
+                       "MERGE (tp:TamañoPelo {name: 'Mediano'}) " +
+                       "MERGE (c:Color {name: 'Gris'}) " +
+                       "MERGE (pers:Personalidad {name: 'Protector'}) " +
+                       "MERGE (p)-[:TIENE_TAMANO]->(t) " +
+                       "MERGE (p)-[:TIENE_PELO]->(pel) " +
+                       "MERGE (p)-[:TIENE_TAMAÑO_PELO]->(tp) " +
+                       "MERGE (p)-[:TIENE_COLOR]->(c) " +
+                       "MERGE (p)-[:TIENE_PERSONALIDAD]->(pers)");
+                tx.run("CREATE (p:Perro {nombre: 'Pastor Aleman'}) " +
+                       "MERGE (t:Tamano {name: 'Grande'}) " +
+                       "MERGE (pel:Pelo {name: 'Liso'}) " +
+                       "MERGE (tp:TamañoPelo {name: 'Largo'}) " +
+                       "MERGE (c:Color {name: 'Negro'}) " +
+                       "MERGE (pers:Personalidad {name: 'Cuidadoso'}) " +
+                       "MERGE (p)-[:TIENE_TAMANO]->(t) " +
+                       "MERGE (p)-[:TIENE_PELO]->(pel) " +
+                       "MERGE (p)-[:TIENE_TAMAÑO_PELO]->(tp) " +
+                       "MERGE (p)-[:TIENE_COLOR]->(c) " +
+                       "MERGE (p)-[:TIENE_PERSONALIDAD]->(pers)");
+                tx.run("CREATE (p:Perro {nombre: 'Husky'}) " +
+                       "MERGE (t:Tamano {name: 'Grande'}) " +
+                       "MERGE (pel:Pelo {name: 'Ondulado'}) " +
+                       "MERGE (tp:TamañoPelo {name: 'Largo'}) " +
+                       "MERGE (c:Color {name: 'Blanco'}) " +
+                       "MERGE (pers:Personalidad {name: 'Tranquilo'}) " +
+                       "MERGE (p)-[:TIENE_TAMANO]->(t) " +
+                       "MERGE (p)-[:TIENE_PELO]->(pel) " +
+                       "MERGE (p)-[:TIENE_TAMAÑO_PELO]->(tp) " +
+                       "MERGE (p)-[:TIENE_COLOR]->(c) " +
+                       "MERGE (p)-[:TIENE_PERSONALIDAD]->(pers)");
+                tx.run("CREATE (p:Perro {nombre: 'Shih Tzu'}) " +
+                       "MERGE (t:Tamano {name: 'Pequeño'}) " +
+                       "MERGE (pel:Pelo {name: 'Liso'}) " +
+                       "MERGE (tp:TamañoPelo {name: 'Largo'}) " +
+                       "MERGE (c:Color {name: 'Blanco'}) " +
+                       "MERGE (pers:Personalidad {name: 'Dormilón'}) " +
+                       "MERGE (p)-[:TIENE_TAMANO]->(t) " +
+                       "MERGE (p)-[:TIENE_PELO]->(pel) " +
+                       "MERGE (p)-[:TIENE_TAMAÑO_PELO]->(tp) " +
+                       "MERGE (p)-[:TIENE_COLOR]->(c) " +
+                       "MERGE (p)-[:TIENE_PERSONALIDAD]->(pers)");
+                tx.commit();
+            }
+        }
+    }
+    
    public void recomendarPerros(String color, String pelo, String personalidad, String tamaño, String clima) {
         Session session = dbConnection.createSession();
         try {
