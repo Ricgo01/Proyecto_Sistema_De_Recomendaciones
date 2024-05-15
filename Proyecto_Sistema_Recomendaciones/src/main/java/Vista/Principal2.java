@@ -4,8 +4,10 @@
  */
 package Vista;
 
+import Controlador.DriverUsuario;
 import com.mycompany.proyecto_sistema_recomendaciones.Perro;
 import javax.swing.JOptionPane;
+import static org.neo4j.driver.GraphDatabase.driver;
 
 /**
  *
@@ -19,6 +21,8 @@ public class Principal2 extends javax.swing.JFrame {
     public Principal2() {
         initComponents();
     }
+    
+    DriverUsuario driver;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,6 +38,7 @@ public class Principal2 extends javax.swing.JFrame {
         BGPelo = new javax.swing.ButtonGroup();
         BGpersonalidad = new javax.swing.ButtonGroup();
         BGtoleranciaClima = new javax.swing.ButtonGroup();
+        btnRegresar = new javax.swing.JButton();
         canvas1 = new java.awt.Canvas();
         BAdoptar = new java.awt.Button();
         BAdoptar1 = new java.awt.Button();
@@ -43,6 +48,16 @@ public class Principal2 extends javax.swing.JFrame {
         opcion3JL = new javax.swing.JLabel();
         opcion2JL = new javax.swing.JLabel();
         fondoJL = new javax.swing.JLabel();
+
+        btnRegresar.setBackground(new java.awt.Color(228, 176, 139));
+        btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(88, 45, 35));
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,7 +114,7 @@ public class Principal2 extends javax.swing.JFrame {
         opcion1JL.setBackground(new java.awt.Color(153, 255, 204));
         opcion1JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito1.png")
         );
-        getContentPane().add(opcion1JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 260, 330));
+        getContentPane().add(opcion1JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 260, 330));
 
         opcion3JL.setBackground(new java.awt.Color(204, 153, 255));
         opcion3JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito3.png")
@@ -128,11 +143,22 @@ public class Principal2 extends javax.swing.JFrame {
 
     private void BRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRegresarActionPerformed
         // TODO add your handling code here:
+         this.dispose();
+        Principal part1 = new Principal();
+        part1.setVisible(true);
     }//GEN-LAST:event_BRegresarActionPerformed
 
     private void BAdoptar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAdoptar3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BAdoptar3ActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+        //iniciarSesion();
+        this.dispose();
+        Login login = new Login(driver);
+        login.setVisible(true);
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,6 +206,7 @@ public class Principal2 extends javax.swing.JFrame {
     private javax.swing.ButtonGroup BGtamanio;
     private javax.swing.ButtonGroup BGtoleranciaClima;
     private java.awt.Button BRegresar;
+    private javax.swing.JButton btnRegresar;
     private java.awt.Canvas canvas1;
     private javax.swing.JLabel fondoJL;
     private javax.swing.JLabel opcion1JL;

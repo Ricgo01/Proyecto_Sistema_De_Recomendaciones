@@ -9,5 +9,6 @@ public class main {
         Controlador controlador = new Controlador();
         controlador.recomendarPerros("Negro", "Corto", "Tranquilo/Relajado", "Grande", "Frios");
         controlador.close();
+        
     }
 }

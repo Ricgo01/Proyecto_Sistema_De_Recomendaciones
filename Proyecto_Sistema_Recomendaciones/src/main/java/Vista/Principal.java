@@ -4,8 +4,11 @@
  */
 package Vista;
 
+import Controlador.DriverUsuario;
+import com.mycompany.proyecto_sistema_recomendaciones.Controlador;
 import com.mycompany.proyecto_sistema_recomendaciones.Perro;
 import javax.swing.JOptionPane;
+import static org.neo4j.driver.GraphDatabase.driver;
 
 /**
  *
@@ -13,6 +16,8 @@ import javax.swing.JOptionPane;
  */
 public class Principal extends javax.swing.JFrame {
 
+    
+    private DriverUsuario driver;
     /**
      * Creates new form Principal
      */
@@ -20,6 +25,12 @@ public class Principal extends javax.swing.JFrame {
         initComponents();
     }
 
+       private void abrirLogin() {
+        this.dispose();
+        Login login = new Login(driver);
+        login.setVisible(true);
+    }
+  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,6 +65,7 @@ public class Principal extends javax.swing.JFrame {
         friosCB = new javax.swing.JCheckBox();
         adaptableCB = new javax.swing.JCheckBox();
         Bbuscar = new java.awt.Button();
+        btnRegresar = new javax.swing.JButton();
         fondoJL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -150,6 +162,17 @@ public class Principal extends javax.swing.JFrame {
         });
         getContentPane().add(Bbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 720, 160, 50));
 
+        btnRegresar.setBackground(new java.awt.Color(228, 176, 139));
+        btnRegresar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnRegresar.setForeground(new java.awt.Color(88, 45, 35));
+        btnRegresar.setText("Regresar");
+        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegresarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 740, 192, 35));
+
         fondoJL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/GRAFICA1.png")
         );
         getContentPane().add(fondoJL, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 10, 1020, 790));
@@ -174,7 +197,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_blancoCBActionPerformed
 
     private void BbuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BbuscarActionPerformed
-     String colorSeleccionado = "";
+    String colorSeleccionado = "";
     String tamañoSeleccionado = "";
     String tipoPeloSeleccionado = "";
     String personalidadSeleccionada = "";
@@ -233,15 +256,21 @@ public class Principal extends javax.swing.JFrame {
         toleranciaClimaSeleccionada = "Baja";
     }
 
-    
-    // Continuar con la obtención de las otras características del perro de manera similar
-    
+        
     // Verificar si todas las características del perro fueron seleccionadas
     if (colorSeleccionado.isEmpty() || tamañoSeleccionado.isEmpty() || tipoPeloSeleccionado.isEmpty() || personalidadSeleccionada.isEmpty() || toleranciaClimaSeleccionada.isEmpty()) {
         // Mostrar un mensaje de error si alguna característica no fue seleccionada
         JOptionPane.showMessageDialog(this, "Debe seleccionar al menos una opción en cada grupo.", "Error", JOptionPane.ERROR_MESSAGE);
     } else {
         // Crear una instancia de la clase Perro utilizando los valores seleccionados
+        Controlador cont = new Controlador();
+        
+        //cont.recomendarPerros2(colorSeleccionado, colorSeleccionado, personalidadSeleccionada, tamañoSeleccionado, colorSeleccionado);
+                
+        
+        
+        
+        /*
         Perro perro = new Perro(
             colorSeleccionado,
             tamañoSeleccionado,
@@ -253,8 +282,21 @@ public class Principal extends javax.swing.JFrame {
         // Hacer algo con el objeto Perro creado, como imprimirlo o guardarlo
         System.out.println("Se ha creado un nuevo perro con las siguientes características :D:");
         System.out.println(perro);
+        */
+      
+        this.dispose();
+        Principal2 part2 = new Principal2();
+        part2.setVisible(true);
+    
     }
     }//GEN-LAST:event_BbuscarActionPerformed
+
+    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
+        // TODO add your handling code here:
+        //iniciarSesion();
+        Cuenta cuen = new Cuenta(driver);
+        cuen.setVisible(true);
+    }//GEN-LAST:event_btnRegresarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -301,6 +343,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JCheckBox activoEnergeticoCB;
     private javax.swing.JCheckBox adaptableCB;
     private javax.swing.JCheckBox blancoCB;
+    private javax.swing.JButton btnRegresar;
     private javax.swing.JCheckBox calidosCB;
     private javax.swing.JCheckBox cortoCB;
     private javax.swing.JLabel fondoJL;

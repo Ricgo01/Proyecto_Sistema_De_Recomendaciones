@@ -4,6 +4,7 @@
  */
 package com.mycompany.proyecto_sistema_recomendaciones;
 
+import java.util.ArrayList;
 import org.neo4j.driver.AuthTokens;
 import org.neo4j.driver.Driver;
 import org.neo4j.driver.GraphDatabase;
@@ -18,29 +19,40 @@ public class Controlador {
         this.dbConnection = new Neo4jConnection("neo4j+s://0503f9ee.databases.neo4j.io", "neo4j", "EPzLf4ZMyFJYAB-dr4bDr1rQ6B1M3aSpnpB6d9qHTPA");
     }
 
-    public void recomendarPerros(String color, String pelo, String personalidad, String tamaño, String clima) {
+   public void recomendarPerros(String color, String pelo, String personalidad, String tamaño, String clima) {
         Session session = dbConnection.createSession();
         try {
             String query = "MATCH (p:Perro) " +
+                           "OPTIONAL MATCH (p)-[:TIENE_COLOR]->(c:Color {name: $color}) " +
+                           "OPTIONAL MATCH (p)-[:TIENE_PELO]->(pl:Pelo {name: $pelo}) " +
+                           "OPTIONAL MATCH (p)-[:TIENE_PERSONALIDAD]->(ps:Personalidad {name: $personalidad}) " +
+                           "OPTIONAL MATCH (p)-[:TIENE_TAMANO]->(t:Size {name: $tamaño}) " +
+                           "OPTIONAL MATCH (p)-[:TIENE_CLIMA]->(cl:Clima {name: $clima}) " +
                            "RETURN p.nombre AS nombre, " +
-                           "   (CASE WHEN EXISTS ((p)-[:TIENE_COLOR]->(:Color {name: $color})) THEN 1 ELSE 0 END + " +
-                           "    CASE WHEN EXISTS ((p)-[:TIENE_PELO]->(:Pelo {name: $pelo})) THEN 1 ELSE 0 END + " +
-                           "    CASE WHEN EXISTS ((p)-[:TIENE_PERSONALIDAD]->(:Personalidad {name: $personalidad})) THEN 1 ELSE 0 END + " +
-                           "    CASE WHEN EXISTS ((p)-[:TIENE_TAMANO]->(:Size {name: $tamaño})) THEN 1 ELSE 0 END + " +
-                           "    CASE WHEN EXISTS ((p)-[:TIENE_CLIMA]->(:Clima {name: $clima})) THEN 1 ELSE 0 END) AS score " +
-                           "ORDER BY score DESC";
+                           "(CASE WHEN c IS NOT NULL THEN 0 ELSE 1 END + " +
+                           "CASE WHEN pl IS NOT NULL THEN 0 ELSE 1 END + " +
+                           "CASE WHEN ps IS NOT NULL THEN 0 ELSE 1 END + " +
+                           "CASE WHEN t IS NOT NULL THEN 0 ELSE 1 END + " +
+                           "CASE WHEN cl IS NOT NULL THEN 0 ELSE 1 END) AS costo " +
+                           "ORDER BY costo ASC";
             Result result = session.run(query, org.neo4j.driver.Values.parameters(
-                "color", color, "pelo", pelo, "personalidad", personalidad, "tamaño", tamaño, "clima", clima
+                "color", color, 
+                "pelo", pelo, 
+                "personalidad", personalidad, 
+                "tamaño", tamaño, 
+                "clima", clima
             ));
-            System.out.println("Perros recomendados basados en las preferencias:");
+            System.out.println("Perros recomendados basados en costos de atributos:");
             while (result.hasNext()) {
                 Record record = result.next();
-                System.out.println("Perro: " + record.get("nombre").asString() + ", Puntuación: " + record.get("score").asInt());
+                System.out.println("Perro: " + record.get("nombre").asString() + ", Costo: " + record.get("costo").asInt());
             }
         } finally {
             session.close();
-        }
-    }
+        }       
+      }
+
+     
 //Cierra esto
     public void close() {
         dbConnection.close();
