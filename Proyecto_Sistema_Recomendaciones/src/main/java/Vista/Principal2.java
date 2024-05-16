@@ -44,7 +44,6 @@ public class Principal2 extends javax.swing.JFrame {
         BAdoptar1 = new java.awt.Button();
         BRegresar = new java.awt.Button();
         BAdoptar3 = new java.awt.Button();
-        opcion1JL = new javax.swing.JLabel();
         opcion3JL = new javax.swing.JLabel();
         opcion2JL = new javax.swing.JLabel();
         fondoJL = new javax.swing.JLabel();
@@ -111,20 +110,15 @@ public class Principal2 extends javax.swing.JFrame {
         });
         getContentPane().add(BAdoptar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, 160, 50));
 
-        opcion1JL.setBackground(new java.awt.Color(153, 255, 204));
-        opcion1JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito1.png")
-        );
-        getContentPane().add(opcion1JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 290, 260, 330));
-
         opcion3JL.setBackground(new java.awt.Color(204, 153, 255));
         opcion3JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito3.png")
         );
-        getContentPane().add(opcion3JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 310, 250, 290));
+        getContentPane().add(opcion3JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 270, 250, 290));
 
         opcion2JL.setBackground(new java.awt.Color(102, 102, 255));
         opcion2JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito2.png")
         );
-        getContentPane().add(opcion2JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 260, 290));
+        getContentPane().add(opcion2JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 260, 290));
 
         fondoJL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/GRAFICA2.png")
         );
@@ -209,7 +203,6 @@ public class Principal2 extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresar;
     private java.awt.Canvas canvas1;
     private javax.swing.JLabel fondoJL;
-    private javax.swing.JLabel opcion1JL;
     private javax.swing.JLabel opcion2JL;
     private javax.swing.JLabel opcion3JL;
     // End of variables declaration//GEN-END:variables

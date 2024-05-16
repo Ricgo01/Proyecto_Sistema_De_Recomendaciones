@@ -232,7 +232,7 @@ public class Principal extends javax.swing.JFrame {
     } else if (rizadoCB.isSelected()) {
         tipoPeloSeleccionado = "Rizado";
     }else if (sinPeloCB.isSelected()) {
-        tipoPeloSeleccionado = "Sin Pelo ";
+        tipoPeloSeleccionado = "SinPelo";
     }
 
     // Obtener la personalidad seleccionada
@@ -253,7 +253,7 @@ public class Principal extends javax.swing.JFrame {
     } else if (friosCB.isSelected()) {
         toleranciaClimaSeleccionada = "Frios";
     } else if (adaptableCB.isSelected()) {
-        toleranciaClimaSeleccionada = "Baja";
+        toleranciaClimaSeleccionada = "Adaptable";
     }
 
         
@@ -265,7 +265,7 @@ public class Principal extends javax.swing.JFrame {
         // Crear una instancia de la clase Perro utilizando los valores seleccionados
         Controlador cont = new Controlador();
         
-        //cont.recomendarPerros2(colorSeleccionado, colorSeleccionado, personalidadSeleccionada, tamañoSeleccionado, colorSeleccionado);
+        cont.recomendarPerros(colorSeleccionado, colorSeleccionado, personalidadSeleccionada, tamañoSeleccionado, colorSeleccionado);
                 
         
         

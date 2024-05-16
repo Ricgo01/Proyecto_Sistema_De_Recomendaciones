@@ -19,6 +19,8 @@ public class Neo4jConnection {
     public Session createSession() {
         return driver.session();
     }
+    
+    
 //conection
     public void close() {
         driver.close();
