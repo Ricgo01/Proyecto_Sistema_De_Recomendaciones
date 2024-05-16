@@ -22,43 +22,44 @@ public class Controlador {
     }
     
     private void initializeDatabase() {
-        try (Session session = dbConnection.createSession()) {
-            try (Transaction tx = session.beginTransaction()) {
-                tx.run("CREATE CONSTRAINT IF NOT EXISTS ON (t:Tamano) ASSERT t.name IS UNIQUE");
-                tx.run("CREATE CONSTRAINT IF NOT EXISTS ON (c:Color) ASSERT c.name IS UNIQUE");
-                tx.run("CREATE CONSTRAINT IF NOT EXISTS ON (p:Pelo) ASSERT p.name IS UNIQUE");
-                tx.run("CREATE CONSTRAINT IF NOT EXISTS ON (pers:Personalidad) ASSERT pers.name IS UNIQUE");
-                tx.run("CREATE CONSTRAINT IF NOT EXISTS ON (clima:ToleranciaClima) ASSERT clima.name IS UNIQUE");
+    try (Session session = dbConnection.createSession()) {
+        try (Transaction tx = session.beginTransaction()) {
+            tx.run("CREATE CONSTRAINT IF NOT EXISTS FOR (t:Tamano) REQUIRE t.name IS UNIQUE");
+            tx.run("CREATE CONSTRAINT IF NOT EXISTS FOR (c:Color) REQUIRE c.name IS UNIQUE");
+            tx.run("CREATE CONSTRAINT IF NOT EXISTS FOR (p:Pelo) REQUIRE p.name IS UNIQUE");
+            tx.run("CREATE CONSTRAINT IF NOT EXISTS FOR (pers:Personalidad) REQUIRE pers.name IS UNIQUE");
+            tx.run("CREATE CONSTRAINT IF NOT EXISTS FOR (clima:ToleranciaClima) REQUIRE clima.name IS UNIQUE");
+            tx.commit();
+        }
 
-                
-                tx.run("CREATE (t:Tamano {name: 'Pequeño'})");
-                tx.run("CREATE (t:Tamano {name: 'Mediano'})");
-                tx.run("CREATE (t:Tamano {name: 'Grande'})");
-                
-                tx.run("CREATE (c:Color {name: 'Negro'})");
-                tx.run("CREATE (c:Color {name: 'Blanco'})");
-                tx.run("CREATE (c:Color {name: 'Gris'})");
-                tx.run("CREATE (c:Color {name: 'Marron'})");
-                tx.run("CREATE (c:Color {name: 'Multicolor'})");
-                
-                tx.run("CREATE (p:Pelo {name: 'Corto'})");
-                tx.run("CREATE (p:Pelo {name: 'Largo'})");
-                tx.run("CREATE (p:Pelo {name: 'Rizado'})");
-                tx.run("CREATE (p:Pelo {name: 'Sin pelo'})");
-                
-                tx.run("CREATE (pers:Personalidad {name: 'Activo/Enérgico'})");
-                tx.run("CREATE (pers:Personalidad {name: 'Tranquilo/Relajado'})");
-                tx.run("CREATE (pers:Personalidad {name: 'Sociable/Amigable'})");
-                tx.run("CREATE (pers:Personalidad {name: 'Independiente/Reservado'})");
-                
-                tx.run("CREATE (clima:ToleranciaClima {name: 'Climas Cálidos'})");
-                tx.run("CREATE (clima:ToleranciaClima {name: 'Climas Frios'})");
-                tx.run("CREATE (clima:ToleranciaClima {name: 'Adaptación a variedad de climas'})");
-                
-                tx.commit();
-            }
+        try (Transaction tx = session.beginTransaction()) {
+            tx.run("MERGE (t:Tamano {name: 'Pequeño'})");
+            tx.run("MERGE (t:Tamano {name: 'Mediano'})");
+            tx.run("MERGE (t:Tamano {name: 'Grande'})");
+
+            tx.run("MERGE (c:Color {name: 'Negro'})");
+            tx.run("MERGE (c:Color {name: 'Blanco'})");
+            tx.run("MERGE (c:Color {name: 'Gris'})");
+            tx.run("MERGE (c:Color {name: 'Marron'})");
+            tx.run("MERGE (c:Color {name: 'Multicolor'})");
+
+            tx.run("MERGE (p:Pelo {name: 'Corto'})");
+            tx.run("MERGE (p:Pelo {name: 'Largo'})");
+            tx.run("MERGE (p:Pelo {name: 'Rizado'})");
+            tx.run("MERGE (p:Pelo {name: 'Sin pelo'})");
+
+            tx.run("MERGE (pers:Personalidad {name: 'Activo/Enérgico'})");
+            tx.run("MERGE (pers:Personalidad {name: 'Tranquilo/Relajado'})");
+            tx.run("MERGE (pers:Personalidad {name: 'Sociable/Amigable'})");
+            tx.run("MERGE (pers:Personalidad {name: 'Independiente/Reservado'})");
+
+            tx.run("MERGE (clima:ToleranciaClima {name: 'Climas Cálidos'})");
+            tx.run("MERGE (clima:ToleranciaClima {name: 'Climas Frios'})");
+            tx.run("MERGE (clima:ToleranciaClima {name: 'Adaptación a variedad de climas'})");
+            tx.commit();
         }
     }
+}
 
     public void agregarPerro(String nombrePerro, String raza, String tamano, String color, String pelo, String personalidad, String toleranciaClima) {
         try (Session session = dbConnection.createSession()) {
