@@ -24,75 +24,69 @@ public class Controlador {
     private void initializeDatabase() {
         try (Session session = dbConnection.createSession()) {
             try (Transaction tx = session.beginTransaction()) {
-                tx.run("CREATE (p:Perro {nombre: 'Chihuahua'}) " +
-                       "MERGE (t:Tamano {name: 'Pequeño'}) " +
-                       "MERGE (pel:Pelo {name: 'Liso'}) " +
-                       "MERGE (tp:TamañoPelo {name: 'Corto'}) " +
-                       "MERGE (c:Color {name: 'Café'}) " +
-                       "MERGE (pers:Personalidad {name: 'Juguetón'}) " +
+                tx.run("CREATE (t:Tamano {name: 'Pequeño'})");
+                tx.run("CREATE (t:Tamano {name: 'Mediano'})");
+                tx.run("CREATE (t:Tamano {name: 'Grande'})");
+                
+                tx.run("CREATE (c:Color {name: 'Negro'})");
+                tx.run("CREATE (c:Color {name: 'Blanco'})");
+                tx.run("CREATE (c:Color {name: 'Gris'})");
+                tx.run("CREATE (c:Color {name: 'Marron'})");
+                tx.run("CREATE (c:Color {name: 'Multicolor'})");
+                
+                tx.run("CREATE (p:Pelo {name: 'Corto'})");
+                tx.run("CREATE (p:Pelo {name: 'Largo'})");
+                tx.run("CREATE (p:Pelo {name: 'Rizado'})");
+                tx.run("CREATE (p:Pelo {name: 'Sin pelo'})");
+                
+                tx.run("CREATE (pers:Personalidad {name: 'Activo/Enérgico'})");
+                tx.run("CREATE (pers:Personalidad {name: 'Tranquilo/Relajado'})");
+                tx.run("CREATE (pers:Personalidad {name: 'Sociable/Amigable'})");
+                tx.run("CREATE (pers:Personalidad {name: 'Independiente/Reservado'})");
+                
+                tx.run("CREATE (clima:ToleranciaClima {name: 'Climas Cálidos'})");
+                tx.run("CREATE (clima:ToleranciaClima {name: 'Climas Frios'})");
+                tx.run("CREATE (clima:ToleranciaClima {name: 'Adaptación a variedad de climas'})");
+                
+                tx.commit();
+            }
+        }
+    }
+
+    public void agregarRaza(String nombre, String tamano, String color, String pelo, String personalidad, String toleranciaClima) {
+        try (Session session = dbConnection.createSession()) {
+            try (Transaction tx = session.beginTransaction()) {
+                tx.run("CREATE (p:Perro {nombre: $nombre}) " +
+                       "MERGE (t:Tamano {name: $tamano}) " +
+                       "MERGE (c:Color {name: $color}) " +
+                       "MERGE (pel:Pelo {name: $pelo}) " +
+                       "MERGE (pers:Personalidad {name: $personalidad}) " +
+                       "MERGE (clima:ToleranciaClima {name: $toleranciaClima}) " +
                        "MERGE (p)-[:TIENE_TAMANO]->(t) " +
-                       "MERGE (p)-[:TIENE_PELO]->(pel) " +
-                       "MERGE (p)-[:TIENE_TAMAÑO_PELO]->(tp) " +
                        "MERGE (p)-[:TIENE_COLOR]->(c) " +
-                       "MERGE (p)-[:TIENE_PERSONALIDAD]->(pers)");
-                tx.run("CREATE (p:Perro {nombre: 'Schnauzer'}) " +
-                       "MERGE (t:Tamano {name: 'Mediano'}) " +
-                       "MERGE (pel:Pelo {name: 'Ondulado'}) " +
-                       "MERGE (tp:TamañoPelo {name: 'Mediano'}) " +
-                       "MERGE (c:Color {name: 'Gris'}) " +
-                       "MERGE (pers:Personalidad {name: 'Protector'}) " +
-                       "MERGE (p)-[:TIENE_TAMANO]->(t) " +
                        "MERGE (p)-[:TIENE_PELO]->(pel) " +
-                       "MERGE (p)-[:TIENE_TAMAÑO_PELO]->(tp) " +
-                       "MERGE (p)-[:TIENE_COLOR]->(c) " +
-                       "MERGE (p)-[:TIENE_PERSONALIDAD]->(pers)");
-                tx.run("CREATE (p:Perro {nombre: 'Pastor Aleman'}) " +
-                       "MERGE (t:Tamano {name: 'Grande'}) " +
-                       "MERGE (pel:Pelo {name: 'Liso'}) " +
-                       "MERGE (tp:TamañoPelo {name: 'Largo'}) " +
-                       "MERGE (c:Color {name: 'Negro'}) " +
-                       "MERGE (pers:Personalidad {name: 'Cuidadoso'}) " +
-                       "MERGE (p)-[:TIENE_TAMANO]->(t) " +
-                       "MERGE (p)-[:TIENE_PELO]->(pel) " +
-                       "MERGE (p)-[:TIENE_TAMAÑO_PELO]->(tp) " +
-                       "MERGE (p)-[:TIENE_COLOR]->(c) " +
-                       "MERGE (p)-[:TIENE_PERSONALIDAD]->(pers)");
-                tx.run("CREATE (p:Perro {nombre: 'Husky'}) " +
-                       "MERGE (t:Tamano {name: 'Grande'}) " +
-                       "MERGE (pel:Pelo {name: 'Ondulado'}) " +
-                       "MERGE (tp:TamañoPelo {name: 'Largo'}) " +
-                       "MERGE (c:Color {name: 'Blanco'}) " +
-                       "MERGE (pers:Personalidad {name: 'Tranquilo'}) " +
-                       "MERGE (p)-[:TIENE_TAMANO]->(t) " +
-                       "MERGE (p)-[:TIENE_PELO]->(pel) " +
-                       "MERGE (p)-[:TIENE_TAMAÑO_PELO]->(tp) " +
-                       "MERGE (p)-[:TIENE_COLOR]->(c) " +
-                       "MERGE (p)-[:TIENE_PERSONALIDAD]->(pers)");
-                tx.run("CREATE (p:Perro {nombre: 'Shih Tzu'}) " +
-                       "MERGE (t:Tamano {name: 'Pequeño'}) " +
-                       "MERGE (pel:Pelo {name: 'Liso'}) " +
-                       "MERGE (tp:TamañoPelo {name: 'Largo'}) " +
-                       "MERGE (c:Color {name: 'Blanco'}) " +
-                       "MERGE (pers:Personalidad {name: 'Dormilón'}) " +
-                       "MERGE (p)-[:TIENE_TAMANO]->(t) " +
-                       "MERGE (p)-[:TIENE_PELO]->(pel) " +
-                       "MERGE (p)-[:TIENE_TAMAÑO_PELO]->(tp) " +
-                       "MERGE (p)-[:TIENE_COLOR]->(c) " +
-                       "MERGE (p)-[:TIENE_PERSONALIDAD]->(pers)");
+                       "MERGE (p)-[:TIENE_PERSONALIDAD]->(pers) " +
+                       "MERGE (p)-[:TIENE_TOLERANCIA_CLIMA]->(clima)", 
+                       org.neo4j.driver.Values.parameters(
+                           "nombre", nombre, 
+                           "tamano", tamano, 
+                           "color", color, 
+                           "pelo", pelo, 
+                           "personalidad", personalidad, 
+                           "toleranciaClima", toleranciaClima));
                 tx.commit();
             }
         }
     }
     
-   public void recomendarPerros(String color, String pelo, String personalidad, String tamaño, String clima) {
-        Session session = dbConnection.createSession();
-        try {
+    public void recomendarPerros(String color, String pelo, String personalidad, String tamaño, String clima) {
+        try (Session session = dbConnection.createSession()) {
             String query = "MATCH (p:Perro) " +
                            "OPTIONAL MATCH (p)-[:TIENE_COLOR]->(c:Color {name: $color}) " +
                            "OPTIONAL MATCH (p)-[:TIENE_PELO]->(pl:Pelo {name: $pelo}) " +
                            "OPTIONAL MATCH (p)-[:TIENE_PERSONALIDAD]->(ps:Personalidad {name: $personalidad}) " +
-                           "OPTIONAL MATCH (p)-[:TIENE_TAMANO]->(t:Size {name: $tamaño}) " +
-                           "OPTIONAL MATCH (p)-[:TIENE_CLIMA]->(cl:Clima {name: $clima}) " +
+                           "OPTIONAL MATCH (p)-[:TIENE_TAMANO]->(t:Tamano {name: $tamaño}) " +
+                           "OPTIONAL MATCH (p)-[:TIENE_TOLERANCIA_CLIMA]->(cl:ToleranciaClima {name: $clima}) " +
                            "RETURN p.nombre AS nombre, " +
                            "(CASE WHEN c IS NOT NULL THEN 0 ELSE 1 END + " +
                            "CASE WHEN pl IS NOT NULL THEN 0 ELSE 1 END + " +
@@ -112,13 +106,10 @@ public class Controlador {
                 Record record = result.next();
                 System.out.println("Perro: " + record.get("nombre").asString() + ", Costo: " + record.get("costo").asInt());
             }
-        } finally {
-            session.close();
-        }       
-      }
+        }
+    }
 
-     
-//Cierra esto
+   
     public void close() {
         dbConnection.close();
     }
