@@ -15,8 +15,11 @@ public class main {
         String respuesta = scanner.nextLine();
 
         if (respuesta.equalsIgnoreCase("sí")) {
-            System.out.println("Ingrese el nombre de la raza:");
-            String nombre = scanner.nextLine();
+            System.out.println("Ingrese el nombre del perro:");
+            String nombrePerro = scanner.nextLine();
+
+            System.out.println("Ingrese la raza del perro:");
+            String raza = scanner.nextLine();
 
             System.out.println("Ingrese el tamaño (Pequeño, Mediano, Grande):");
             String tamano = scanner.nextLine();
@@ -33,8 +36,8 @@ public class main {
             System.out.println("Ingrese la tolerancia al clima (Climas Cálidos, Climas Frios, Adaptación a variedad de climas):");
             String toleranciaClima = scanner.nextLine();
 
-            controlador.agregarRaza(nombre, tamano, color, pelo, personalidad, toleranciaClima);
-            System.out.println("Raza de perro agregada exitosamente.");
+            controlador.agregarPerro(nombrePerro, raza, tamano, color, pelo, personalidad, toleranciaClima);
+            System.out.println("Perro agregado exitosamente.");
         }
 
         System.out.println("Ingrese los criterios para recomendar perros:");
