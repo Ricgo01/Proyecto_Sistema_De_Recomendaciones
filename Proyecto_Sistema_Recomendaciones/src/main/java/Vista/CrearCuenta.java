@@ -121,7 +121,7 @@ public class CrearCuenta extends javax.swing.JFrame {
         btnRegistrate.setBackground(new java.awt.Color(228, 176, 139));
         btnRegistrate.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnRegistrate.setForeground(new java.awt.Color(88, 45, 35));
-        btnRegistrate.setText("Registrate");
+        btnRegistrate.setText("Regístrate");
         btnRegistrate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrateActionPerformed(evt);
@@ -154,6 +154,7 @@ public class CrearCuenta extends javax.swing.JFrame {
     private void btnRegistrateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrateActionPerformed
         // TODO add your handling code here:
         crearCuenta();
+        abrirLogin();
     }//GEN-LAST:event_btnRegistrateActionPerformed
 
        // Método main para prueba

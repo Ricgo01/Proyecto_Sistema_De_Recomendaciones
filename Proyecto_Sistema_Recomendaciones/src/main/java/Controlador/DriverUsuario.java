@@ -46,6 +46,11 @@ public class DriverUsuario {
             globalid = 0;
         }
     }
+    
+     public int obtenerSiguienteID() {
+        globalid++;
+        return globalid;
+    }
 
     // Método para validar y guardar un nuevo usuario
     public void validarUsuario(String mensaje, int idActual, String nombre, String correo, String contrasena, boolean nuevo) {
@@ -58,7 +63,7 @@ public class DriverUsuario {
 
     // Guardar o actualizar un usuario en la lista
     public void guardarUsuario(String mensaje, int idActual, String nombre, String correo, String contrasena, boolean nuevo) {
-        Usuario usuario = new Usuario(globalid++, nombre, correo, contrasena, null);
+        Usuario usuario = new Usuario(0, nombre, correo, contrasena, null);   
         if (nuevo) {
             usuarios.add(usuario); // Añadir nuevo usuario
         } else {

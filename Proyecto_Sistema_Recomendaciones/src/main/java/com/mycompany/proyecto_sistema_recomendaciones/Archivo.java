@@ -15,6 +15,7 @@ public class Archivo {
     private File archivoUsuarios;
     private File archivoPerros;
 
+    
     public Archivo(String nombreUsuarios, String nombrePerros) {
         archivoUsuarios = new File(nombreUsuarios);
         archivoPerros = new File(nombrePerros);
@@ -23,11 +24,16 @@ public class Archivo {
     public void guardarUsuariosCSV(ArrayList<Usuario> usuarios) throws Exception {
         FileWriter fileWriter = new FileWriter(archivoUsuarios);
         PrintWriter escritor = new PrintWriter(fileWriter);
+        int idCounter = usuarios.stream().mapToInt(Usuario::getId).max().orElse(0) + 1;
+
 
         String encabezados = "id,nombre,correo,password";
         escritor.println(encabezados);
 
         for (Usuario usuario : usuarios) {
+            if (usuario.getId() == 0) {  // Asignar un nuevo ID si el usuario no tiene uno
+                usuario.setId(idCounter++);
+            }
             int id = usuario.getId();
             String nombre = usuario.getNombre();
             String correo = usuario.getCorreo();

@@ -132,7 +132,7 @@ public class Login extends javax.swing.JFrame {
                 txtNombreUsuarioActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 370, 200, 30));
+        getContentPane().add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 390, 200, 30));
 
         txtPassword.setText("jPasswordField1");
         txtPassword.addActionListener(new java.awt.event.ActionListener() {
@@ -140,7 +140,7 @@ public class Login extends javax.swing.JFrame {
                 txtPasswordActionPerformed(evt);
             }
         });
-        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 478, 190, 30));
+        getContentPane().add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, 190, 30));
 
         btnIniciarSesion.setBackground(new java.awt.Color(228, 176, 139));
         btnIniciarSesion.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -151,15 +151,15 @@ public class Login extends javax.swing.JFrame {
                 btnIniciarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 560, 192, 35));
+        getContentPane().add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 590, 192, 35));
 
-        lbRegistrarse.setText("¿No tienes una cuenta? Registrate");
+        lbRegistrarse.setText("¿No tienes una cuenta? Regístrate");
         lbRegistrarse.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lbRegistrarseMouseClicked(evt);
             }
         });
-        getContentPane().add(lbRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 610, 220, -1));
+        getContentPane().add(lbRegistrarse, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 640, 220, -1));
 
         fondoJL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/Login.png")
         );
