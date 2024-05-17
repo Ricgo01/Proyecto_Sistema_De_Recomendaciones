@@ -51,6 +51,67 @@ public class Controlador {
             session.close();
         }       
       }
+   
+   public void agregarPerro(String nombre, String color, String size, String tipoPelo, String personalidad, String clima) {
+        Session session = dbConnection.createSession();
+        try {
+            String query = "CREATE (p:Perro {nombre: $nombre, size: $size, tipoPelo: $tipoPelo, personalidad: $personalidad, clima: $clima}) " +
+                           "WITH p " +
+                           "MATCH (c:Color {value: $color}), " +
+                                "(s:Size {value: $size}), " +
+                                "(tp:Pelo {value: $tipoPelo}), " +
+                                "(ps:Personalidad {value: $personalidad}), " +
+                                "(cl:Clima {value: $clima}) " +
+                           "MERGE (p)-[:TIENE_COLOR]->(c) " +
+                                 "(p)-[:TIENE_SIZE]->(s) " +
+                                 "(p)-[:TIENE_PELO]->(tp) " +
+                                 "(p)-[:TIENE_PERSONALIDAD]->(ps) " +
+                                 "(p)-[:TIENE_CLIMA]->(cl) " +
+                           "RETURN p";
+            Result result = session.run(query, org.neo4j.driver.Values.parameters(
+                "nombre", nombre,
+                "color", color,
+                "size", size,
+                "tipoPelo", tipoPelo,
+                "personalidad", personalidad,
+                "clima", clima
+            ));
+            if (result.hasNext()) {
+                System.out.println("Perro agregado con éxito: " + result.single().get("p").asNode().get("nombre").asString());
+            }
+        } finally {
+            session.close();
+        }
+    }
+   
+    public void agregarPerro(String nombre, String raza, String color, String tamaño, String pelo, String personalidad, String clima) {
+     Session session = dbConnection.createSession();
+     try {
+         String query = "MERGE (p:Perro {nombre: $nombre, raza: $raza}) " +
+                        "MERGE (c:Color {name: $color}) " +
+                        "MERGE (sz:Tamano {name: $tamaño}) " +
+                        "MERGE (pl:Pelo {name: $pelo}) " +
+                        "MERGE (ps:Personalidad {name: $personalidad}) " +
+                        "MERGE (cl:Clima {name: $clima}) " +
+                        "CREATE (p)-[:TIENE_COLOR]->(c) " +
+                        "CREATE (p)-[:TIENE_TAMANO]->(sz) " +
+                        "CREATE (p)-[:TIENE_PELO]->(pl) " +
+                        "CREATE (p)-[:TIENE_PERSONALIDAD]->(ps) " +
+                        "CREATE (p)-[:TIENE_CLIMA]->(cl) ";
+         session.run(query, org.neo4j.driver.Values.parameters(
+             "nombre", nombre, 
+             "raza", raza, 
+             "color", color, 
+             "tamaño", tamaño, 
+             "pelo", pelo, 
+             "personalidad", personalidad, 
+             "clima", clima
+         ));
+         System.out.println("Perro agregado y conectado con sus atributos correctamente.");
+     } finally {
+         session.close();
+     }       
+ }
 
      
 //Cierra esto
