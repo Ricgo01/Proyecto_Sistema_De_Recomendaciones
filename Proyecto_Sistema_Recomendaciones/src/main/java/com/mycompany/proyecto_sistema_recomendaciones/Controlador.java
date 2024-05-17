@@ -11,6 +11,7 @@ import org.neo4j.driver.GraphDatabase;
 import org.neo4j.driver.Session;
 import org.neo4j.driver.Result;
 import org.neo4j.driver.Record;
+import org.neo4j.driver.Values;
 
 public class Controlador {
     private Neo4jConnection dbConnection;
@@ -19,70 +20,39 @@ public class Controlador {
         this.dbConnection = new Neo4jConnection("neo4j+s://0503f9ee.databases.neo4j.io", "neo4j", "EPzLf4ZMyFJYAB-dr4bDr1rQ6B1M3aSpnpB6d9qHTPA");
     }
 
-   public void recomendarPerros(String color, String pelo, String personalidad, String tamaño, String clima) {
-        Session session = dbConnection.createSession();
-        try {
+    public ArrayList<String> recomendarPerros(String color, String pelo, String personalidad, String tamaño, String clima) {
+        ArrayList<String> recomendados = new ArrayList<>();
+        try (Session session = dbConnection.createSession()) {
             String query = "MATCH (p:Perro) " +
                            "OPTIONAL MATCH (p)-[:TIENE_COLOR]->(c:Color {name: $color}) " +
                            "OPTIONAL MATCH (p)-[:TIENE_PELO]->(pl:Pelo {name: $pelo}) " +
                            "OPTIONAL MATCH (p)-[:TIENE_PERSONALIDAD]->(ps:Personalidad {name: $personalidad}) " +
                            "OPTIONAL MATCH (p)-[:TIENE_TAMANO]->(t:Tamano {name: $tamaño}) " +
                            "OPTIONAL MATCH (p)-[:TIENE_CLIMA]->(cl:Clima {name: $clima}) " +
-                           "RETURN p.nombre AS nombre, " +
-                           "(CASE WHEN c IS NOT NULL THEN 0 ELSE 1 END + " +
-                           "CASE WHEN pl IS NOT NULL THEN 0 ELSE 1 END + " +
-                           "CASE WHEN ps IS NOT NULL THEN 0 ELSE 1 END + " +
-                           "CASE WHEN t IS NOT NULL THEN 0 ELSE 1 END + " +
-                           "CASE WHEN cl IS NOT NULL THEN 0 ELSE 1 END) AS costo " +
-                           "ORDER BY costo ASC";
-            Result result = session.run(query, org.neo4j.driver.Values.parameters(
+                           "RETURN p.nombre AS nombre " +
+                           "ORDER BY (CASE WHEN c IS NULL THEN 1 ELSE 0 END + " +
+                           "CASE WHEN pl IS NULL THEN 1 ELSE 0 END + " +
+                           "CASE WHEN ps IS NULL THEN 1 ELSE 0 END + " +
+                           "CASE WHEN t IS NULL THEN 1 ELSE 0 END + " +
+                           "CASE WHEN cl IS NULL THEN 1 ELSE 0 END) ASC " +
+                           "LIMIT 3";
+            Result result = session.run(query, Values.parameters(
                 "color", color, 
                 "pelo", pelo, 
                 "personalidad", personalidad, 
                 "tamaño", tamaño, 
                 "clima", clima
             ));
-            System.out.println("Perros recomendados basados en costos de atributos:");
+
             while (result.hasNext()) {
                 Record record = result.next();
-                System.out.println("Perro: " + record.get("nombre").asString() + ", Costo: " + record.get("costo").asInt());
+                recomendados.add(record.get("nombre").asString());
             }
-        } finally {
-            session.close();
-        }       
-      }
-   
-   public void agregarPerro(String nombre, String color, String size, String tipoPelo, String personalidad, String clima) {
-        Session session = dbConnection.createSession();
-        try {
-            String query = "CREATE (p:Perro {nombre: $nombre, size: $size, tipoPelo: $tipoPelo, personalidad: $personalidad, clima: $clima}) " +
-                           "WITH p " +
-                           "MATCH (c:Color {value: $color}), " +
-                                "(s:Size {value: $size}), " +
-                                "(tp:Pelo {value: $tipoPelo}), " +
-                                "(ps:Personalidad {value: $personalidad}), " +
-                                "(cl:Clima {value: $clima}) " +
-                           "MERGE (p)-[:TIENE_COLOR]->(c) " +
-                                 "(p)-[:TIENE_SIZE]->(s) " +
-                                 "(p)-[:TIENE_PELO]->(tp) " +
-                                 "(p)-[:TIENE_PERSONALIDAD]->(ps) " +
-                                 "(p)-[:TIENE_CLIMA]->(cl) " +
-                           "RETURN p";
-            Result result = session.run(query, org.neo4j.driver.Values.parameters(
-                "nombre", nombre,
-                "color", color,
-                "size", size,
-                "tipoPelo", tipoPelo,
-                "personalidad", personalidad,
-                "clima", clima
-            ));
-            if (result.hasNext()) {
-                System.out.println("Perro agregado con éxito: " + result.single().get("p").asNode().get("nombre").asString());
-            }
-        } finally {
-            session.close();
         }
+        return recomendados;
     }
+   
+
    
     public void agregarPerro(String nombre, String raza, String color, String tamaño, String pelo, String personalidad, String clima) {
      Session session = dbConnection.createSession();
