@@ -25,9 +25,11 @@ public class Principal2 extends javax.swing.JFrame {
             txtNombre1.setText(nombresPerros.get(0));
             txtNombre2.setText(nombresPerros.get(1));
             txtNombre3.setText(nombresPerros.get(2));
-
+            System.out.println(txtNombre1);
+            opcion1JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/"+nombresPerros.get(0)+".png"));
+            opcion2JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/"+nombresPerros.get(1)+".png"));
+            opcion3JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/"+nombresPerros.get(2)+".png"));
         }
-       
     }
     
     DriverUsuario driver;
@@ -75,7 +77,7 @@ public class Principal2 extends javax.swing.JFrame {
         txtNombre1 = new javax.swing.JLabel();
         txtNombre2 = new javax.swing.JLabel();
         txtNombre3 = new javax.swing.JLabel();
-        opcion2JL2 = new javax.swing.JLabel();
+        opcion1JL = new javax.swing.JLabel();
         fondoJL = new javax.swing.JLabel();
 
         btnRegresar.setBackground(new java.awt.Color(228, 176, 139));
@@ -143,20 +145,25 @@ public class Principal2 extends javax.swing.JFrame {
         opcion3JL.setBackground(new java.awt.Color(204, 153, 255));
         opcion3JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito3.png")
         );
-        getContentPane().add(opcion3JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 300, 250, 260));
+        getContentPane().add(opcion3JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 330, 250, 260));
 
         opcion2JL.setBackground(new java.awt.Color(102, 102, 255));
-        opcion2JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito2.png")
-        );
-        getContentPane().add(opcion2JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 260, 260));
-        getContentPane().add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 130, 50));
-        getContentPane().add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 100, 40));
-        getContentPane().add(txtNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 270, 60, 20));
+        getContentPane().add(opcion2JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 340, 260, 260));
 
-        opcion2JL2.setBackground(new java.awt.Color(102, 102, 255));
-        opcion2JL2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito2.png")
-        );
-        getContentPane().add(opcion2JL2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 260, 260));
+        txtNombre1.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        txtNombre1.setForeground(new java.awt.Color(88, 45, 35));
+        getContentPane().add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 200, 50));
+
+        txtNombre2.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        txtNombre2.setForeground(new java.awt.Color(88, 45, 35));
+        getContentPane().add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 260, 250, 50));
+
+        txtNombre3.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        txtNombre3.setForeground(new java.awt.Color(88, 45, 35));
+        getContentPane().add(txtNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 270, 240, 50));
+
+        opcion1JL.setBackground(new java.awt.Color(102, 102, 255));
+        getContentPane().add(opcion1JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 260, 260));
 
         fondoJL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/GRAFICA2.png")
         );
@@ -242,8 +249,8 @@ public class Principal2 extends javax.swing.JFrame {
     private javax.swing.JButton btnRegresar;
     private java.awt.Canvas canvas1;
     private javax.swing.JLabel fondoJL;
+    private javax.swing.JLabel opcion1JL;
     private javax.swing.JLabel opcion2JL;
-    private javax.swing.JLabel opcion2JL2;
     private javax.swing.JLabel opcion3JL;
     private javax.swing.JLabel txtNombre1;
     private javax.swing.JLabel txtNombre2;
