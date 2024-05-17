@@ -11,19 +11,9 @@ public class main {
         Scanner scanner = new Scanner(System.in);
         Controlador controlador = new Controlador();
         
-        System.out.println("Recomendando perros basados en criterios específicos:");
-        ArrayList<String> recomendados = controlador.recomendarPerros("Negro", "Corto", "Tranquilo/Relajado", "Grande", "Frios");
-        for (String perro : recomendados) {
-            System.out.println("Perro recomendado: " + perro);
-        }
         
         
-        
-        
-        
-        
-        
-        System.out.println("Agregar un nuevo perro a la base de datos.");
+        System.out.println("Bienvenido Programador. Agregar un nuevo perro a la base de datos.");
         System.out.print("Ingrese nombre del perro: ");
         String nombre = scanner.nextLine();
         System.out.print("Ingrese raza del perro: ");
