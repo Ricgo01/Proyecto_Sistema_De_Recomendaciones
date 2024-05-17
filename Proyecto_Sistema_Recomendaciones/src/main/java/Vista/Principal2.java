@@ -149,9 +149,9 @@ public class Principal2 extends javax.swing.JFrame {
         opcion2JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito2.png")
         );
         getContentPane().add(opcion2JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 260, 260));
-        getContentPane().add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, -1));
-        getContentPane().add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, -1, -1));
-        getContentPane().add(txtNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 270, -1, -1));
+        getContentPane().add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 130, 50));
+        getContentPane().add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, 100, 40));
+        getContentPane().add(txtNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 270, 60, 20));
 
         opcion2JL2.setBackground(new java.awt.Color(102, 102, 255));
         opcion2JL2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito2.png")
