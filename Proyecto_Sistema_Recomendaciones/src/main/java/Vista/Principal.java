@@ -7,6 +7,7 @@ package Vista;
 import Controlador.DriverUsuario;
 import com.mycompany.proyecto_sistema_recomendaciones.Controlador;
 import com.mycompany.proyecto_sistema_recomendaciones.Perro;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import static org.neo4j.driver.GraphDatabase.driver;
 
@@ -265,11 +266,16 @@ public class Principal extends javax.swing.JFrame {
         // Crear una instancia de la clase Perro utilizando los valores seleccionados
         Controlador cont = new Controlador();
         
-        cont.recomendarPerros(colorSeleccionado, colorSeleccionado, personalidadSeleccionada, tamañoSeleccionado, colorSeleccionado);
-                
+        //cont.recomendarPerros(colorSeleccionado, tipoPeloSeleccionado, personalidadSeleccionada, tamañoSeleccionado, toleranciaClimaSeleccionada);
+        ArrayList<String> recomendados = cont.recomendarPerros(colorSeleccionado, tipoPeloSeleccionado, personalidadSeleccionada, tamañoSeleccionado, toleranciaClimaSeleccionada);
+         
         
-        
-        
+        for (String perro : recomendados) {
+            System.out.println(perro);
+        }
+         
+    
+
         /*
         Perro perro = new Perro(
             colorSeleccionado,
@@ -285,7 +291,7 @@ public class Principal extends javax.swing.JFrame {
         */
       
         this.dispose();
-        Principal2 part2 = new Principal2();
+        Principal2 part2 = new Principal2(recomendados);
         part2.setVisible(true);
     
     }

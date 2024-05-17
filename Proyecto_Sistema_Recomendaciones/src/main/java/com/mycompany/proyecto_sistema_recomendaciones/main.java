@@ -17,6 +17,12 @@ public class main {
             System.out.println("Perro recomendado: " + perro);
         }
         
+        
+        
+        
+        
+        
+        
         System.out.println("Agregar un nuevo perro a la base de datos.");
         System.out.print("Ingrese nombre del perro: ");
         String nombre = scanner.nextLine();

@@ -6,6 +6,7 @@ package Vista;
 
 import Controlador.DriverUsuario;
 import com.mycompany.proyecto_sistema_recomendaciones.Perro;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import static org.neo4j.driver.GraphDatabase.driver;
 
@@ -18,12 +19,37 @@ public class Principal2 extends javax.swing.JFrame {
     /**
      * Creates new form Principal
      */
-    public Principal2() {
+    public Principal2(ArrayList<String> nombresPerros) {
         initComponents();
+          if (nombresPerros.size() >= 3) {
+            txtNombre1.setText(nombresPerros.get(0));
+            txtNombre2.setText(nombresPerros.get(1));
+            txtNombre3.setText(nombresPerros.get(2));
+
+        }
+       
     }
     
     DriverUsuario driver;
 
+    /*
+    public void mostrarNombresPerros(ArrayList<String> nombresPerros) {
+        // Verifica que la lista tenga al menos tres nombres
+        if (nombresPerros.size() >= 3) {
+            txtNombre1.setText(nombresPerros.get(0));
+            txtNombre2.setText(nombresPerros.get(1));
+            txtNombre3.setText(nombresPerros.get(2));
+        } else {
+            // Si no hay suficientes nombres en la lista, establece los JLabel en blanco
+            txtNombre1.setText("");
+            txtNombre2.setText("");
+            txtNombre3.setText("");
+        }
+    }
+    */
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,6 +72,10 @@ public class Principal2 extends javax.swing.JFrame {
         BAdoptar3 = new java.awt.Button();
         opcion3JL = new javax.swing.JLabel();
         opcion2JL = new javax.swing.JLabel();
+        txtNombre1 = new javax.swing.JLabel();
+        txtNombre2 = new javax.swing.JLabel();
+        txtNombre3 = new javax.swing.JLabel();
+        opcion2JL2 = new javax.swing.JLabel();
         fondoJL = new javax.swing.JLabel();
 
         btnRegresar.setBackground(new java.awt.Color(228, 176, 139));
@@ -113,12 +143,20 @@ public class Principal2 extends javax.swing.JFrame {
         opcion3JL.setBackground(new java.awt.Color(204, 153, 255));
         opcion3JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito3.png")
         );
-        getContentPane().add(opcion3JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 270, 250, 290));
+        getContentPane().add(opcion3JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 300, 250, 260));
 
         opcion2JL.setBackground(new java.awt.Color(102, 102, 255));
         opcion2JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito2.png")
         );
-        getContentPane().add(opcion2JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 290, 260, 290));
+        getContentPane().add(opcion2JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 260, 260));
+        getContentPane().add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, -1, -1));
+        getContentPane().add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 270, -1, -1));
+        getContentPane().add(txtNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 270, -1, -1));
+
+        opcion2JL2.setBackground(new java.awt.Color(102, 102, 255));
+        opcion2JL2.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito2.png")
+        );
+        getContentPane().add(opcion2JL2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 260, 260));
 
         fondoJL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/GRAFICA2.png")
         );
@@ -182,12 +220,13 @@ public class Principal2 extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the form 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Principal2().setVisible(true);
             }
         });
+        */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -204,6 +243,10 @@ public class Principal2 extends javax.swing.JFrame {
     private java.awt.Canvas canvas1;
     private javax.swing.JLabel fondoJL;
     private javax.swing.JLabel opcion2JL;
+    private javax.swing.JLabel opcion2JL2;
     private javax.swing.JLabel opcion3JL;
+    private javax.swing.JLabel txtNombre1;
+    private javax.swing.JLabel txtNombre2;
+    private javax.swing.JLabel txtNombre3;
     // End of variables declaration//GEN-END:variables
 }
