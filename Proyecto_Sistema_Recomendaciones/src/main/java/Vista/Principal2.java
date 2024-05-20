@@ -9,6 +9,8 @@ import com.mycompany.proyecto_sistema_recomendaciones.Perro;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import static org.neo4j.driver.GraphDatabase.driver;
+import com.mycompany.proyecto_sistema_recomendaciones.Controlador;
+
 
 /**
  *
@@ -32,7 +34,10 @@ public class Principal2 extends javax.swing.JFrame {
         }
     }
     
+    Controlador cont = new Controlador();
+
     DriverUsuario driver;
+    ArrayList<String> detallesDePerros = cont.obtenerDetallesPerrosRecomendados();
 
     /*
     public void mostrarNombresPerros(ArrayList<String> nombresPerros) {
