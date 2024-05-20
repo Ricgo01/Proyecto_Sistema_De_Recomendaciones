@@ -52,41 +52,35 @@ public class Controlador {
         return recomendados;
     }
     
-    public ArrayList<String> obtenerDetallesPerrosRecomendados(String[] nombresPerros) {
-        ArrayList<String> detallesPerros = new ArrayList<>();
-        try (Session session = dbConnection.createSession()) {  // Usando dbConnection para crear la sesión
-            for (String nombre : nombresPerros) {
-                String query = "MATCH (p:Perro {nombre: $nombre}) " +
-                               "OPTIONAL MATCH (p)-[:TIENE_COLOR]->(c:Color) " +
-                               "OPTIONAL MATCH (p)-[:TIENE_PELO]->(pl:Pelo) " +
-                               "OPTIONAL MATCH (p)-[:TIENE_PERSONALIDAD]->(ps:Personalidad) " +
-                               "OPTIONAL MATCH (p)-[:TIENE_TAMANO]->(t:Tamano) " +
-                               "OPTIONAL MATCH (p)-[:TIENE_CLIMA]->(cl:Clima) " +
-                               "RETURN p.nombre AS nombre, " +
-                               "coalesce(c.name, 'No especificado') AS color, " +
-                               "coalesce(pl.name, 'No especificado') AS pelo, " +
-                               "coalesce(ps.name, 'No especificado') AS personalidad, " +
-                               "coalesce(t.name, 'No especificado') AS tamaño, " +
-                               "coalesce(cl.name, 'No especificado') AS clima";
-
-                Result result = session.run(query, org.neo4j.driver.Values.parameters("nombre", nombre));
-                while (result.hasNext()) {
-                    Record record = result.next();
-                    String detalles = String.format(
-                        "%s: Color: %s, Pelo: %s, Personalidad: %s, Tamaño: %s, Clima: %s",
-                        record.get("nombre").asString(),
-                        record.get("color").asString(),
-                        record.get("pelo").asString(),
-                        record.get("personalidad").asString(),
-                        record.get("tamaño").asString(),
-                        record.get("clima").asString()
-                    );
-                    detallesPerros.add(detalles);
-                }
+   public ArrayList<String> obtenerDetallesPerrosRecomendados(ArrayList<String> nombresPerros) {
+    ArrayList<String> detallesPerros = new ArrayList<>();
+    try (Session session = dbConnection.createSession()) {
+        for (String nombre : nombresPerros) {
+            String query = "MATCH (p:Perro {nombre: $nombre}) " +
+                           "OPTIONAL MATCH (p)-[:TIENE_COLOR]->(c:Color) " +
+                           "OPTIONAL MATCH (p)-[:TIENE_PELO]->(pl:Pelo) " +
+                           "OPTIONAL MATCH (p)-[:TIENE_PERSONALIDAD]->(ps:Personalidad) " +
+                           "OPTIONAL MATCH (p)-[:TIENE_TAMANO]->(t:Tamano) " +
+                           "OPTIONAL MATCH (p)-[:TIENE_CLIMA]->(cl:Clima) " +
+                           "RETURN c.name AS color, pl.name AS pelo, " +
+                           "ps.name AS personalidad, t.name AS tamaño, cl.name AS clima";
+            Result result = session.run(query, Values.parameters("nombre", nombre));
+            while (result.hasNext()) {
+                Record record = result.next();
+                String detalles = String.format(
+                    "Color: %s\nPelo: %s\nPersonalidad: %s\nTamaño: %s\nClima: %s",
+                    record.get("color").isNull() ? "N/A" : record.get("color").asString(),
+                    record.get("pelo").isNull() ? "N/A" : record.get("pelo").asString(),
+                    record.get("personalidad").isNull() ? "N/A" : record.get("personalidad").asString(),
+                    record.get("tamaño").isNull() ? "N/A" : record.get("tamaño").asString(),
+                    record.get("clima").isNull() ? "N/A" : record.get("clima").asString()
+                );
+                detallesPerros.add(detalles);
             }
         }
-        return detallesPerros;
-    }    
+    }
+    return detallesPerros;
+}
 
    
 

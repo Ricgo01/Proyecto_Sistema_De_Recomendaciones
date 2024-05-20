@@ -23,21 +23,27 @@ public class Principal2 extends javax.swing.JFrame {
      */
     public Principal2(ArrayList<String> nombresPerros) {
         initComponents();
-          if (nombresPerros.size() >= 3) {
+        ArrayList<String> detallesDePerros = cont.obtenerDetallesPerrosRecomendados(nombresPerros);  
+          if (nombresPerros.size() >= 3 && detallesDePerros.size()>=3) {
             txtNombre1.setText(nombresPerros.get(0));
             txtNombre2.setText(nombresPerros.get(1));
             txtNombre3.setText(nombresPerros.get(2));
-            System.out.println(txtNombre1);
             opcion1JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/"+nombresPerros.get(0)+".png"));
             opcion2JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/"+nombresPerros.get(1)+".png"));
             opcion3JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/"+nombresPerros.get(2)+".png"));
-        }
+            txtCaracteristicas1.setText("<html>" + detallesDePerros.get(0).replace("\n", "<br>") + "</html>");
+            txtCaracteristicas2.setText("<html>" + detallesDePerros.get(1).replace("\n", "<br>") + "</html>");
+            txtCaracteristicas3.setText("<html>" + detallesDePerros.get(2).replace("\n", "<br>") + "</html>");
+          }
+         
+ 
     }
     
     Controlador cont = new Controlador();
 
+
     DriverUsuario driver;
-    ArrayList<String> detallesDePerros = cont.obtenerDetallesPerrosRecomendados();
+    
 
     /*
     public void mostrarNombresPerros(ArrayList<String> nombresPerros) {
@@ -80,13 +86,16 @@ public class Principal2 extends javax.swing.JFrame {
         opcion3JL = new javax.swing.JLabel();
         opcion2JL = new javax.swing.JLabel();
         txtNombre1 = new javax.swing.JLabel();
-        txtCaracteristicas1 = new javax.swing.JLabel();
+        carac3 = new javax.swing.JLabel();
         txtNombre3 = new javax.swing.JLabel();
         opcion1JL = new javax.swing.JLabel();
         txtNombre2 = new javax.swing.JLabel();
         txtNombre5 = new javax.swing.JLabel();
-        txtCaracteristicas2 = new javax.swing.JLabel();
+        txtCara1 = new javax.swing.JLabel();
+        carac2 = new javax.swing.JLabel();
         txtCaracteristicas3 = new javax.swing.JLabel();
+        txtCaracteristicas2 = new javax.swing.JLabel();
+        txtCaracteristicas1 = new javax.swing.JLabel();
         fondoJL = new javax.swing.JLabel();
 
         btnRegresar.setBackground(new java.awt.Color(228, 176, 139));
@@ -163,10 +172,10 @@ public class Principal2 extends javax.swing.JFrame {
         txtNombre1.setForeground(new java.awt.Color(88, 45, 35));
         getContentPane().add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 200, 50));
 
-        txtCaracteristicas1.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
-        txtCaracteristicas1.setForeground(new java.awt.Color(88, 45, 35));
-        txtCaracteristicas1.setText("Caracteristicas");
-        getContentPane().add(txtCaracteristicas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 600, 250, 50));
+        carac3.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        carac3.setForeground(new java.awt.Color(88, 45, 35));
+        carac3.setText("Caracteristicas");
+        getContentPane().add(carac3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 600, 250, 50));
 
         txtNombre3.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         txtNombre3.setForeground(new java.awt.Color(88, 45, 35));
@@ -183,15 +192,24 @@ public class Principal2 extends javax.swing.JFrame {
         txtNombre5.setForeground(new java.awt.Color(88, 45, 35));
         getContentPane().add(txtNombre5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 250, 50));
 
-        txtCaracteristicas2.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
-        txtCaracteristicas2.setForeground(new java.awt.Color(88, 45, 35));
-        txtCaracteristicas2.setText("Caracteristicas:");
-        getContentPane().add(txtCaracteristicas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 600, 250, 50));
+        txtCara1.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        txtCara1.setForeground(new java.awt.Color(88, 45, 35));
+        txtCara1.setText("Caracteristicas:");
+        getContentPane().add(txtCara1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 600, 250, 50));
 
-        txtCaracteristicas3.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
-        txtCaracteristicas3.setForeground(new java.awt.Color(88, 45, 35));
-        txtCaracteristicas3.setText("Caracteristicas:");
-        getContentPane().add(txtCaracteristicas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 600, 250, 50));
+        carac2.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        carac2.setForeground(new java.awt.Color(88, 45, 35));
+        carac2.setText("Caracteristicas:");
+        getContentPane().add(carac2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 600, 250, 50));
+
+        txtCaracteristicas3.setFont(new java.awt.Font("Futura", 0, 14)); // NOI18N
+        getContentPane().add(txtCaracteristicas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 650, 210, 120));
+
+        txtCaracteristicas2.setFont(new java.awt.Font("Futura", 0, 14)); // NOI18N
+        getContentPane().add(txtCaracteristicas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 650, 210, 120));
+
+        txtCaracteristicas1.setFont(new java.awt.Font("Futura", 0, 14)); // NOI18N
+        getContentPane().add(txtCaracteristicas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 650, 210, 120));
 
         fondoJL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/GRAFICA2.png")
         );
@@ -276,10 +294,13 @@ public class Principal2 extends javax.swing.JFrame {
     private java.awt.Button BRegresar;
     private javax.swing.JButton btnRegresar;
     private java.awt.Canvas canvas1;
+    private javax.swing.JLabel carac2;
+    private javax.swing.JLabel carac3;
     private javax.swing.JLabel fondoJL;
     private javax.swing.JLabel opcion1JL;
     private javax.swing.JLabel opcion2JL;
     private javax.swing.JLabel opcion3JL;
+    private javax.swing.JLabel txtCara1;
     private javax.swing.JLabel txtCaracteristicas1;
     private javax.swing.JLabel txtCaracteristicas2;
     private javax.swing.JLabel txtCaracteristicas3;
