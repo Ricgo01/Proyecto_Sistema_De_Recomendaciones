@@ -152,7 +152,7 @@ public class Principal2 extends javax.swing.JFrame {
         getContentPane().add(opcion3JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, 260, 260));
 
         opcion2JL.setBackground(new java.awt.Color(102, 102, 255));
-        getContentPane().add(opcion2JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 260, 260));
+        getContentPane().add(opcion2JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 260, 260));
 
         txtNombre1.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         txtNombre1.setForeground(new java.awt.Color(88, 45, 35));
@@ -161,7 +161,7 @@ public class Principal2 extends javax.swing.JFrame {
         txtCaracteristicas1.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         txtCaracteristicas1.setForeground(new java.awt.Color(88, 45, 35));
         txtCaracteristicas1.setText("Caracteristicas");
-        getContentPane().add(txtCaracteristicas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 590, 250, 50));
+        getContentPane().add(txtCaracteristicas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 600, 250, 50));
 
         txtNombre3.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         txtNombre3.setForeground(new java.awt.Color(88, 45, 35));
@@ -180,13 +180,13 @@ public class Principal2 extends javax.swing.JFrame {
 
         txtCaracteristicas2.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         txtCaracteristicas2.setForeground(new java.awt.Color(88, 45, 35));
-        txtCaracteristicas2.setText("Caracteristicas");
-        getContentPane().add(txtCaracteristicas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, 250, 50));
+        txtCaracteristicas2.setText("Caracteristicas:");
+        getContentPane().add(txtCaracteristicas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 600, 250, 50));
 
         txtCaracteristicas3.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         txtCaracteristicas3.setForeground(new java.awt.Color(88, 45, 35));
-        txtCaracteristicas3.setText("Caracteristicas");
-        getContentPane().add(txtCaracteristicas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 590, 250, 50));
+        txtCaracteristicas3.setText("Caracteristicas:");
+        getContentPane().add(txtCaracteristicas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 600, 250, 50));
 
         fondoJL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/GRAFICA2.png")
         );
