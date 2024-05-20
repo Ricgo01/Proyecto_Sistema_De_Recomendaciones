@@ -154,7 +154,6 @@ public class CrearCuenta extends javax.swing.JFrame {
     private void btnRegistrateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrateActionPerformed
         // TODO add your handling code here:
         crearCuenta();
-        abrirLogin();
     }//GEN-LAST:event_btnRegistrateActionPerformed
 
        // Método main para prueba
