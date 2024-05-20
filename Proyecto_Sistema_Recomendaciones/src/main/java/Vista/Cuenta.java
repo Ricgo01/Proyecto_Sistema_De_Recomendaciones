@@ -92,7 +92,6 @@ public class Cuenta extends javax.swing.JFrame {
         BGtoleranciaClima = new javax.swing.ButtonGroup();
         canvas1 = new java.awt.Canvas();
         btnCerrarSesion = new javax.swing.JButton();
-        btnPerrosAdoptados = new javax.swing.JButton();
         btnAdoptarPerro1 = new javax.swing.JButton();
         fondoJL = new javax.swing.JLabel();
 
@@ -109,18 +108,7 @@ public class Cuenta extends javax.swing.JFrame {
                 btnCerrarSesionActionPerformed(evt);
             }
         });
-        getContentPane().add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 520, 230, 60));
-
-        btnPerrosAdoptados.setBackground(new java.awt.Color(228, 176, 139));
-        btnPerrosAdoptados.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnPerrosAdoptados.setForeground(new java.awt.Color(88, 45, 35));
-        btnPerrosAdoptados.setText("Perros Adoptados");
-        btnPerrosAdoptados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPerrosAdoptadosActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnPerrosAdoptados, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 230, 60));
+        getContentPane().add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 440, 230, 60));
 
         btnAdoptarPerro1.setBackground(new java.awt.Color(228, 176, 139));
         btnAdoptarPerro1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -131,7 +119,7 @@ public class Cuenta extends javax.swing.JFrame {
                 btnAdoptarPerro1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAdoptarPerro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 230, 60));
+        getContentPane().add(btnAdoptarPerro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 230, 60));
 
         fondoJL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/Cuenta.png")
         );
@@ -144,11 +132,6 @@ public class Cuenta extends javax.swing.JFrame {
         // TODO add your handling code here:
         abrirLogin();
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
-
-    private void btnPerrosAdoptadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerrosAdoptadosActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btnPerrosAdoptadosActionPerformed
 
     private void btnAdoptarPerro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdoptarPerro1ActionPerformed
         // TODO add your handling code here:
@@ -165,7 +148,6 @@ public class Cuenta extends javax.swing.JFrame {
     private javax.swing.ButtonGroup BGtoleranciaClima;
     private javax.swing.JButton btnAdoptarPerro1;
     private javax.swing.JButton btnCerrarSesion;
-    private javax.swing.JButton btnPerrosAdoptados;
     private java.awt.Canvas canvas1;
     private javax.swing.JLabel fondoJL;
     // End of variables declaration//GEN-END:variables

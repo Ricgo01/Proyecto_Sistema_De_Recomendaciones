@@ -75,9 +75,13 @@ public class Principal2 extends javax.swing.JFrame {
         opcion3JL = new javax.swing.JLabel();
         opcion2JL = new javax.swing.JLabel();
         txtNombre1 = new javax.swing.JLabel();
-        txtNombre2 = new javax.swing.JLabel();
+        txtCaracteristicas1 = new javax.swing.JLabel();
         txtNombre3 = new javax.swing.JLabel();
         opcion1JL = new javax.swing.JLabel();
+        txtNombre2 = new javax.swing.JLabel();
+        txtNombre5 = new javax.swing.JLabel();
+        txtCaracteristicas2 = new javax.swing.JLabel();
+        txtCaracteristicas3 = new javax.swing.JLabel();
         fondoJL = new javax.swing.JLabel();
 
         btnRegresar.setBackground(new java.awt.Color(228, 176, 139));
@@ -104,7 +108,7 @@ public class Principal2 extends javax.swing.JFrame {
                 BAdoptarActionPerformed(evt);
             }
         });
-        getContentPane().add(BAdoptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 620, 160, 50));
+        getContentPane().add(BAdoptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 540, 160, 50));
 
         BAdoptar1.setActionCommand("BUSCAR");
         BAdoptar1.setBackground(new java.awt.Color(228, 176, 139));
@@ -116,7 +120,7 @@ public class Principal2 extends javax.swing.JFrame {
                 BAdoptar1ActionPerformed(evt);
             }
         });
-        getContentPane().add(BAdoptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 620, 160, 50));
+        getContentPane().add(BAdoptar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 540, 160, 50));
 
         BRegresar.setActionCommand("BUSCAR");
         BRegresar.setBackground(new java.awt.Color(228, 176, 139));
@@ -128,7 +132,7 @@ public class Principal2 extends javax.swing.JFrame {
                 BRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(BRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 720, 160, 50));
+        getContentPane().add(BRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, 160, 50));
 
         BAdoptar3.setActionCommand("BUSCAR");
         BAdoptar3.setBackground(new java.awt.Color(228, 176, 139));
@@ -140,30 +144,49 @@ public class Principal2 extends javax.swing.JFrame {
                 BAdoptar3ActionPerformed(evt);
             }
         });
-        getContentPane().add(BAdoptar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, 160, 50));
+        getContentPane().add(BAdoptar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, 160, 50));
 
         opcion3JL.setBackground(new java.awt.Color(204, 153, 255));
         opcion3JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito3.png")
         );
-        getContentPane().add(opcion3JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 350, 260, 260));
+        getContentPane().add(opcion3JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 340, 260, 260));
 
         opcion2JL.setBackground(new java.awt.Color(102, 102, 255));
-        getContentPane().add(opcion2JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 260, 260));
+        getContentPane().add(opcion2JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 260, 260));
 
         txtNombre1.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         txtNombre1.setForeground(new java.awt.Color(88, 45, 35));
-        getContentPane().add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 200, 50));
+        getContentPane().add(txtNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, 200, 50));
 
-        txtNombre2.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
-        txtNombre2.setForeground(new java.awt.Color(88, 45, 35));
-        getContentPane().add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 250, 50));
+        txtCaracteristicas1.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        txtCaracteristicas1.setForeground(new java.awt.Color(88, 45, 35));
+        txtCaracteristicas1.setText("Caracteristicas");
+        getContentPane().add(txtCaracteristicas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 590, 250, 50));
 
         txtNombre3.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         txtNombre3.setForeground(new java.awt.Color(88, 45, 35));
         getContentPane().add(txtNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 280, 240, 50));
 
         opcion1JL.setBackground(new java.awt.Color(102, 102, 255));
-        getContentPane().add(opcion1JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 260, 260));
+        getContentPane().add(opcion1JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 260, 260));
+
+        txtNombre2.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        txtNombre2.setForeground(new java.awt.Color(88, 45, 35));
+        getContentPane().add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 250, 50));
+
+        txtNombre5.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        txtNombre5.setForeground(new java.awt.Color(88, 45, 35));
+        getContentPane().add(txtNombre5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 280, 250, 50));
+
+        txtCaracteristicas2.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        txtCaracteristicas2.setForeground(new java.awt.Color(88, 45, 35));
+        txtCaracteristicas2.setText("Caracteristicas");
+        getContentPane().add(txtCaracteristicas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 590, 250, 50));
+
+        txtCaracteristicas3.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
+        txtCaracteristicas3.setForeground(new java.awt.Color(88, 45, 35));
+        txtCaracteristicas3.setText("Caracteristicas");
+        getContentPane().add(txtCaracteristicas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 590, 250, 50));
 
         fondoJL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/GRAFICA2.png")
         );
@@ -252,8 +275,12 @@ public class Principal2 extends javax.swing.JFrame {
     private javax.swing.JLabel opcion1JL;
     private javax.swing.JLabel opcion2JL;
     private javax.swing.JLabel opcion3JL;
+    private javax.swing.JLabel txtCaracteristicas1;
+    private javax.swing.JLabel txtCaracteristicas2;
+    private javax.swing.JLabel txtCaracteristicas3;
     private javax.swing.JLabel txtNombre1;
     private javax.swing.JLabel txtNombre2;
     private javax.swing.JLabel txtNombre3;
+    private javax.swing.JLabel txtNombre5;
     // End of variables declaration//GEN-END:variables
 }
