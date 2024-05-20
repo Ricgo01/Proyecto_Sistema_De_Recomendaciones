@@ -44,6 +44,7 @@ public class Controlador {
                 "clima", clima
             ));
 
+            
             while (result.hasNext()) {
                 Record record = result.next();
                 recomendados.add(record.get("nombre").asString());
@@ -80,7 +81,10 @@ public class Controlador {
         }
     }
     return detallesPerros;
-}   
+}
+
+
+   
    public void eliminarPerro(String nombre) {
         try (Session session = dbConnection.createSession()) {
             String query = "MATCH (p:Perro {nombre: $nombre}) DETACH DELETE p";

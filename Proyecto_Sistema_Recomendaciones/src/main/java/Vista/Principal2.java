@@ -17,12 +17,15 @@ import com.mycompany.proyecto_sistema_recomendaciones.Controlador;
  * @author viankacastro
  */
 public class Principal2 extends javax.swing.JFrame {
+    
+    private ArrayList<String> nomPerros;
 
     /**
      * Creates new form Principal
      */
     public Principal2(ArrayList<String> nombresPerros) {
         initComponents();
+        this.nomPerros = nombresPerros; 
         ArrayList<String> detallesDePerros = cont.obtenerDetallesPerrosRecomendados(nombresPerros);  
           if (nombresPerros.size() >= 3 && detallesDePerros.size()>=3) {
             txtNombre1.setText(nombresPerros.get(0));
@@ -79,10 +82,10 @@ public class Principal2 extends javax.swing.JFrame {
         BGtoleranciaClima = new javax.swing.ButtonGroup();
         btnRegresar = new javax.swing.JButton();
         canvas1 = new java.awt.Canvas();
-        BAdoptar = new java.awt.Button();
+        BAdoptar3 = new java.awt.Button();
         BAdoptar1 = new java.awt.Button();
         BRegresar = new java.awt.Button();
-        BAdoptar3 = new java.awt.Button();
+        BAdoptar2 = new java.awt.Button();
         opcion3JL = new javax.swing.JLabel();
         opcion2JL = new javax.swing.JLabel();
         txtNombre1 = new javax.swing.JLabel();
@@ -112,17 +115,17 @@ public class Principal2 extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(canvas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 460, -1, -1));
 
-        BAdoptar.setActionCommand("BUSCAR");
-        BAdoptar.setBackground(new java.awt.Color(228, 176, 139));
-        BAdoptar.setFont(new java.awt.Font("Futura", 1, 18)); // NOI18N
-        BAdoptar.setForeground(new java.awt.Color(88, 45, 35));
-        BAdoptar.setLabel("ADOPTAR");
-        BAdoptar.addActionListener(new java.awt.event.ActionListener() {
+        BAdoptar3.setActionCommand("BUSCAR");
+        BAdoptar3.setBackground(new java.awt.Color(228, 176, 139));
+        BAdoptar3.setFont(new java.awt.Font("Futura", 1, 18)); // NOI18N
+        BAdoptar3.setForeground(new java.awt.Color(88, 45, 35));
+        BAdoptar3.setLabel("ADOPTAR");
+        BAdoptar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BAdoptarActionPerformed(evt);
+                BAdoptar3ActionPerformed(evt);
             }
         });
-        getContentPane().add(BAdoptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 540, 160, 50));
+        getContentPane().add(BAdoptar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 540, 160, 50));
 
         BAdoptar1.setActionCommand("BUSCAR");
         BAdoptar1.setBackground(new java.awt.Color(228, 176, 139));
@@ -146,19 +149,19 @@ public class Principal2 extends javax.swing.JFrame {
                 BRegresarActionPerformed(evt);
             }
         });
-        getContentPane().add(BRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 20, 160, 50));
+        getContentPane().add(BRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 60, 160, 50));
 
-        BAdoptar3.setActionCommand("BUSCAR");
-        BAdoptar3.setBackground(new java.awt.Color(228, 176, 139));
-        BAdoptar3.setFont(new java.awt.Font("Futura", 1, 18)); // NOI18N
-        BAdoptar3.setForeground(new java.awt.Color(88, 45, 35));
-        BAdoptar3.setLabel("ADOPTAR");
-        BAdoptar3.addActionListener(new java.awt.event.ActionListener() {
+        BAdoptar2.setActionCommand("BUSCAR");
+        BAdoptar2.setBackground(new java.awt.Color(228, 176, 139));
+        BAdoptar2.setFont(new java.awt.Font("Futura", 1, 18)); // NOI18N
+        BAdoptar2.setForeground(new java.awt.Color(88, 45, 35));
+        BAdoptar2.setLabel("ADOPTAR");
+        BAdoptar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BAdoptar3ActionPerformed(evt);
+                BAdoptar2ActionPerformed(evt);
             }
         });
-        getContentPane().add(BAdoptar3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, 160, 50));
+        getContentPane().add(BAdoptar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 540, 160, 50));
 
         opcion3JL.setBackground(new java.awt.Color(204, 153, 255));
         opcion3JL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/perrito3.png")
@@ -182,7 +185,7 @@ public class Principal2 extends javax.swing.JFrame {
         getContentPane().add(txtNombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 280, 240, 50));
 
         opcion1JL.setBackground(new java.awt.Color(102, 102, 255));
-        getContentPane().add(opcion1JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 330, 260, 260));
+        getContentPane().add(opcion1JL, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 260, 260));
 
         txtNombre2.setFont(new java.awt.Font("Futura", 1, 24)); // NOI18N
         txtNombre2.setForeground(new java.awt.Color(88, 45, 35));
@@ -203,13 +206,13 @@ public class Principal2 extends javax.swing.JFrame {
         getContentPane().add(carac2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 600, 250, 50));
 
         txtCaracteristicas3.setFont(new java.awt.Font("Futura", 0, 14)); // NOI18N
-        getContentPane().add(txtCaracteristicas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 650, 210, 120));
+        getContentPane().add(txtCaracteristicas3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 650, 210, 120));
 
         txtCaracteristicas2.setFont(new java.awt.Font("Futura", 0, 14)); // NOI18N
         getContentPane().add(txtCaracteristicas2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 650, 210, 120));
 
         txtCaracteristicas1.setFont(new java.awt.Font("Futura", 0, 14)); // NOI18N
-        getContentPane().add(txtCaracteristicas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 650, 210, 120));
+        getContentPane().add(txtCaracteristicas1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 650, 210, 120));
 
         fondoJL.setIcon(new javax.swing.ImageIcon(System.getProperty("user.dir")+"/src/main/java/img/GRAFICA2.png")
         );
@@ -218,12 +221,23 @@ public class Principal2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BAdoptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAdoptarActionPerformed
-    
-    }//GEN-LAST:event_BAdoptarActionPerformed
+    private void BAdoptar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAdoptar3ActionPerformed
+      if (nomPerros.size() > 0) {
+        String nombrePerro = nomPerros.get(2);
+        cont.eliminarPerro(nombrePerro);
+        JOptionPane.showMessageDialog(this, "Te hemos enviado por tu correo los datos para proceder con la adopción!", "Adopción Exitosa", JOptionPane.INFORMATION_MESSAGE);
+      }
+    }//GEN-LAST:event_BAdoptar3ActionPerformed
 
     private void BAdoptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAdoptar1ActionPerformed
         // TODO add your handling code here:
+         if (nomPerros.size() > 0) {
+        String nombrePerro = nomPerros.get(0);
+        cont.eliminarPerro(nombrePerro);
+        JOptionPane.showMessageDialog(this, "Te hemos enviado por tu correo los datos para proceder con la adopción!", "Adopción Exitosa", JOptionPane.INFORMATION_MESSAGE);
+
+    }
+        
     }//GEN-LAST:event_BAdoptar1ActionPerformed
 
     private void BRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRegresarActionPerformed
@@ -233,9 +247,14 @@ public class Principal2 extends javax.swing.JFrame {
         part1.setVisible(true);
     }//GEN-LAST:event_BRegresarActionPerformed
 
-    private void BAdoptar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAdoptar3ActionPerformed
+    private void BAdoptar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BAdoptar2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_BAdoptar3ActionPerformed
+          if (nomPerros.size() > 0) {
+        String nombrePerro = nomPerros.get(1);
+        cont.eliminarPerro(nombrePerro);
+        JOptionPane.showMessageDialog(this, "Te hemos enviado por tu correo los datos para proceder con la adopción!", "Adopción Exitosa", JOptionPane.INFORMATION_MESSAGE);
+          }
+    }//GEN-LAST:event_BAdoptar2ActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
         // TODO add your handling code here:
@@ -283,8 +302,8 @@ public class Principal2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button BAdoptar;
     private java.awt.Button BAdoptar1;
+    private java.awt.Button BAdoptar2;
     private java.awt.Button BAdoptar3;
     private javax.swing.ButtonGroup BGPelo;
     private javax.swing.ButtonGroup BGcolor;
