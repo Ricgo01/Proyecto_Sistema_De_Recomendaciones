@@ -80,7 +80,13 @@ public class Controlador {
         }
     }
     return detallesPerros;
-}
+}   
+   public void eliminarPerro(String nombre) {
+        try (Session session = dbConnection.createSession()) {
+            String query = "MATCH (p:Perro {nombre: $nombre}) DETACH DELETE p";
+            session.run(query, Values.parameters("nombre", nombre));
+        }
+    }
 
    
 
