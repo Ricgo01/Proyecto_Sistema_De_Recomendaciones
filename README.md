@@ -22,23 +22,19 @@ Finalmente, el sistema clasifica a los perros según su "costo" acumulado y reco
 
 ### Iniciar Sesión
 Esta página sirve para que el usuario pueda tener acceso al programa, el usuario puede tener toda su información guardada al iniciar sesión, si todavía no tiene cuenta, se le da una opción al usuario para que cree un usuario en la página de crear cuenta.
-Figura 1. Inicio de sesión
+
 
 ### Crear Cuenta
 En esta página se le pide al usuario un nombre, su correo y una contraseña, con estos tres caracteres se crea un usuario con el que podrá iniciar sesión en la página de iniciar sesión. El usuario creado irá a un csv para poder guardar todos sus datos.
-Figura 2. Crear Cuenta
 
 ### Elegir características del perro
 Esta página es la esencial para que el usuario sea vinculado con el perro que más se adecue a sus preferencias, es esta pagina podemos encontrar varias características como lo son: tamaño, color, pelo, personalidad y tolerancia al calor. Después de escoger las características que más le gusten en un perro y presionar buscar e ir a la página de Adoptar un perro de los recomendados. En esta página también se puede regresar a la página anterior e ingresar con otro usuario.
-Figura 3. Recomendaciones de perros
 
 ### Adopción de un perro
 Después de seleccionar las características que más le gusten al usuario, será mandado a esta página en donde se mostrarán tres perros con características similares a las seleccionadas anteriormente, en la parte inferior se puede observar las características similares por las cuales se recomendó ese perro, el usuario puede escoger alguno de estos perros y adoptarlos borrándose de la base de datos.
-Figura 4. Resultados y adopción
 
 ## Base de datos
 La base de datos utilizada fue Neo4j aura, que nos proporcionó una visualización gráfica de nuestros nodos de perros y sus características. Para conectar nuestra base de datos con Apache NetBeans, optamos por iniciar sesión mediante el uso de un nombre de usuario y una contraseña la cual siempre nos brindaría una conexión mientras el programa se esté corriendo. Además, para realizar acciones como la inserción y eliminación de datos, utilizamos Cypher, que facilita la traducción de comandos a un lenguaje comprensible para Neo4j, permitiendo así que nuestro proyecto en Java pudiera comunicarse eficazmente con la base de datos.
-Figura 5. Base de datos final
 
 ### Explicación
 El diagrama final es una representación visual de un sistema que busca identificar la similitud entre diferentes perros basándose en diversas características. Cada perro se representa como un nodo en el diagrama, y estas características se entrelazan entre sí para determinar qué mascotas son más similares en base a las preferencias del usuario.
