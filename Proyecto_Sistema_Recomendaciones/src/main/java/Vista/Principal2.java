@@ -226,6 +226,9 @@ public class Principal2 extends javax.swing.JFrame {
         String nombrePerro = nomPerros.get(2);
         cont.eliminarPerro(nombrePerro);
         JOptionPane.showMessageDialog(this, "Te hemos enviado por tu correo los datos para proceder con la adopción!", "Adopción Exitosa", JOptionPane.INFORMATION_MESSAGE);
+        this.dispose();
+        Cuenta cuenta = new Cuenta(driver);
+        cuenta.setVisible(true);
       }
     }//GEN-LAST:event_BAdoptar3ActionPerformed
 
@@ -235,7 +238,9 @@ public class Principal2 extends javax.swing.JFrame {
         String nombrePerro = nomPerros.get(0);
         cont.eliminarPerro(nombrePerro);
         JOptionPane.showMessageDialog(this, "Te hemos enviado por tu correo los datos para proceder con la adopción!", "Adopción Exitosa", JOptionPane.INFORMATION_MESSAGE);
-
+        this.dispose();
+        Cuenta cuenta = new Cuenta(driver);
+        cuenta.setVisible(true);
     }
         
     }//GEN-LAST:event_BAdoptar1ActionPerformed
@@ -253,7 +258,10 @@ public class Principal2 extends javax.swing.JFrame {
         String nombrePerro = nomPerros.get(1);
         cont.eliminarPerro(nombrePerro);
         JOptionPane.showMessageDialog(this, "Te hemos enviado por tu correo los datos para proceder con la adopción!", "Adopción Exitosa", JOptionPane.INFORMATION_MESSAGE);
-          }
+        this.dispose();
+        Cuenta cuenta = new Cuenta(driver);
+        cuenta.setVisible(true);
+       }
     }//GEN-LAST:event_BAdoptar2ActionPerformed
 
     private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
